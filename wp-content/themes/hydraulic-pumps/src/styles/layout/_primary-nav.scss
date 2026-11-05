@@ -1,0 +1,98 @@
+.primary-nav {
+	display: flex;
+	justify-content: space-between;
+	gap: 1.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.primary-nav__link {
+	display: flex;
+	color: var(--color-text-reversed);
+	text-decoration: none;
+	font-weight: var(--font-weight-semi);
+	font-size: var(--text-size-s);
+	padding: 0.75rem 0;
+
+	&:hover {
+		color: var(--color-text-reversed);
+	}
+	&[aria-current="page"] {
+		text-decoration: underline;
+	}
+}
+
+// =============================================================================
+// Dropdown sub-menu: opens on hover, and on keyboard focus via :focus-within
+// =============================================================================
+
+.primary-nav__item {
+	position: relative;
+}
+
+// Arrow on parent links. arrow.svg points right: turn it down, then up when open
+.primary-nav__item--parent > .primary-nav__link::after {
+	content: '';
+	flex: none;
+	align-self: center;
+	width: 15px; // Same as the .btn arrow
+	height: 12px;
+	margin-left: 0.4rem;
+	background-color: currentColor;
+	mask: url('../../images/arrow.svg') center / contain no-repeat;
+	transform: rotate(90deg);
+	transition: transform var(--transition-base);
+}
+
+.primary-nav__sub-menu {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	z-index: z-scale(overlay);
+	min-width: 220px;
+	margin: 0;
+	padding: 0.5rem;
+	list-style: none;
+	background: var(--color-primary);
+	border-radius: 0 0 var(--radius-s) var(--radius-s);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+	opacity: 0;
+	visibility: hidden;
+	transform: translate(-50%, 10px);
+	transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+}
+
+.primary-nav__item--parent:hover,
+.primary-nav__item--parent:focus-within {
+	> .primary-nav__link::after {
+		transform: rotate(-90deg);
+	}
+
+	> .primary-nav__sub-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50%, 0);
+	}
+}
+
+.primary-nav__sub-link {
+	display: block;
+	padding: 0.5rem 0.75rem;
+	color: var(--color-text-reversed);
+	font-weight: var(--font-weight-semi);
+	font-size: var(--text-size-s);
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: var(--radius-s);
+	transition: background var(--transition-base);
+
+	&:hover {
+		color: var(--color-text-reversed);
+		background: var(--color-primary-darker);
+	}
+
+	&[aria-current="page"] {
+		text-decoration: underline;
+	}
+}

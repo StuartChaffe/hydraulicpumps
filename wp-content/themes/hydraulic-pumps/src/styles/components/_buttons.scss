@@ -1,0 +1,189 @@
+.wp-block-buttons,
+.btn-group {
+	gap: 1.25rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+.btn-group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--spacing-s);
+}
+.btn,
+.wp-block-button__link,
+.wpcf7-submit {
+	--button-bg: var(--color-secondary);
+	--button-color: var(--color-white);
+	--button-hover-bg: var(--color-primary-darker);
+	--button-hover-color: var(--color-white);
+	--button-radius: var(--radius-s);
+	--button-border-width: 0px;
+	--button-border-color: transparent;
+	--button-hover-border-color: transparent;
+	--button-outline-width: 0px;
+	--button-outline-style: solid;
+	--button-outline-color: currentColor;
+	--button-outline-offset: 0.1lh;
+	--button-padding: 0.6rem 1.1rem;
+	--button-gap: 0.5em;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--button-gap);
+	padding: var(--button-padding);
+
+	background: var(--button-bg);
+	color: var(--button-color);
+
+	border: var(--button-border-width) solid var(--button-border-color);
+	border-radius: var(--button-radius);
+
+	text-decoration: none;
+	font-weight: var(--font-weight-semi);
+	font-size: var(--text-size-base);
+	line-height: 1;
+
+	appearance: none;
+	cursor: pointer;
+	transition: background var(--transition-base), color var(--transition-base), border var(--transition-base);
+
+	&::after {
+		position: relative;
+		display: block;
+		flex: none;
+		width: 15px;
+		height: 12px;
+		content: '';
+		background-color: currentColor;
+		mask: url('../../images/arrow.svg') center / contain no-repeat;
+		right: 0;
+		transition: transform var(--transition-base);
+	}
+
+	&:hover::after {
+		transform: translateX(0.2em);
+	}
+
+	&:hover {
+		background: var(--button-hover-bg);
+		color: var(--button-hover-color);
+		border-color: var(--button-hover-border-color);
+		text-decoration: none;
+	}
+
+	&:focus-visible {
+		outline-width: var(--button-outline-width);
+		outline-style: var(--button-outline-style);
+		outline-color: var(--button-outline-color);
+		outline-offset: var(--button-outline-offset);
+	}
+
+	&:active {
+		transform: scale(99%);
+	}
+}
+
+.btn svg {
+	height: var(--button-icon-size, 1.2cap);
+	width: auto;
+	flex: none;
+}
+
+.btn--popup::after {
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: url('../../images/plus.svg') no-repeat center / contain;
+}
+
+// No arrow on the header email and phone buttons. Must come after .btn::after
+.btn--email::after,
+.btn--phone::after {
+	display: none;
+}
+
+// Icon before the text on the email and phone buttons
+.btn--email::before,
+.btn--phone::before {
+	content: '';
+	flex: none;
+	width: 1.1em;
+	height: 1.1em;
+	background-color: currentColor;
+	mask: url('../../images/envelope.svg') center / contain no-repeat;
+}
+
+.btn--phone::before {
+	mask-image: url('../../images/phone.svg');
+}
+
+.btn--secondary {
+	--button-bg: var(--color-tertiary);
+	--button-color: var(--color-text-base);
+	// --button-hover-bg: var(--color-primary);
+}
+
+// .btn--outline,
+// .is-style-outline a {
+// 	--button-bg: transparent;
+// 	--button-color: var(--color-text-base);
+// 	// --button-hover-bg: var(--color-text-base);
+// 	--button-hover-color: var(--color-text-base);
+// 	--button-hover-border-color: var(--color-text-base);
+// 	--button-border-width: 2px;
+// 	--button-border-color: currentColor;
+// }
+
+.btn--outline,
+.is-style-outline a,
+.is-style-outline div,
+.btn--link,
+p.btn--link a {
+	text-decoration: none;
+	position: relative;
+	--button-bg: transparent;
+	--button-color: var(--color-text-link);
+	--button-hover-bg: transparent;
+	--button-hover-color: var(--color-text-base);
+
+	border: 0;
+	text-decoration: underline;
+	padding: 0;
+
+	&:hover {
+		color:  var(--color-text-hover);
+		text-decoration: underline;
+	}
+
+	&::after {
+		position: absolute;
+		content: '→';
+		right: -1.5rem;
+		display: inline-block;
+		transition: transform var(--transition-base);
+	}
+
+	&:hover::after {
+		transform: translateX(0.2em);
+	}
+}
+// a.has-primary-background-color {
+// 	color: var(--color-text-reversed);
+// 	&:hover {
+// 		color: var(--color-text-base);
+// 		background-color: var(--color-cream) !important;
+// 	}
+// }
+// a.has-secondary-background-color,
+// a.has-tertiary-background-color,
+// a.has-white-background-color  {
+// 	color: var(--color-text-base);
+// 	&:hover {
+// 		color: var(--color-text-base);
+// 		background-color: var(--color-cream) !important;
+// 	}
+// }
+p + .wp-block-buttons {
+	margin-top: var(--spacing-l);
+}

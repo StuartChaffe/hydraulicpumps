@@ -1,0 +1,29 @@
+// =============================================================================
+// Site
+// =============================================================================
+
+.global-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: var(--spacing-xs) auto 0 auto;
+	width: calc(100% - 1rem);
+	max-width: var(--container-width-l);
+	background: var(--color-white);
+	border-radius: var(--radius);
+	@include mq(medium) {
+		margin: var(--spacing-xl) auto 0 auto;
+		width: calc(100% - 4rem);
+	}
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 1rem;
+	width: 100%;
+	max-width: var(--container-width);
+}
+
+.container--s {
+	max-width: var(--content-width);
+}
