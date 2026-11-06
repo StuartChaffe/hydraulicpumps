@@ -14,17 +14,23 @@
 	// background image). Bottom-left, up to its natural 844px width at its natural
 	// proportions; if the block is taller, it stretches vertically to fill it
 	// (the SVG has preserveAspectRatio="none"). Above the image, below the content.
+	// Mobile: no stretching. It keeps its proportions, scales up to fill the
+	// header's height, pinned bottom-left, and whatever doesn't fit is cropped.
 	&::after {
 		content: '';
 		position: absolute;
-		left: 0;
-		bottom: 0;
+		inset: 0;
 		z-index: -1;
-		width: min(844px, 60%);
-		aspect-ratio: 844 / 522;
-		min-height: 100%;
-		background: url('../../src/images/banner-mask.svg') left bottom / 100% 100% no-repeat;
+		background: url('../../src/images/banner-mask.svg') left bottom / cover no-repeat;
 		pointer-events: none;
+
+		@include mq(medium) {
+			inset: auto auto 0 0;
+			width: min(844px, 60%);
+			aspect-ratio: 844 / 522;
+			min-height: 100%;
+			background-size: 100% 100%;
+		}
 	}
 }
 
