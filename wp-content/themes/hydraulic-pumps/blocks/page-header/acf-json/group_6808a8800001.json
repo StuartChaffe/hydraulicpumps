@@ -3,12 +3,12 @@
     "title": "Block\/Page Header",
     "fields": [
         {
-            "key": "field_6808a8800002",
-            "label": "Title",
-            "name": "title",
+            "key": "field_6808a8800007",
+            "label": "Size",
+            "name": "size",
             "aria-label": "",
-            "type": "text",
-            "instructions": "",
+            "type": "button_group",
+            "instructions": "Large can have a background image and an image beside the text. Small centres the text, with no images.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -16,47 +16,83 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "choices": {
+                "large": "Large",
+                "small": "Small"
+            },
+            "default_value": "large",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
         },
         {
-            "key": "field_6808a8800003",
-            "label": "Description",
-            "name": "description",
+            "key": "field_6808a8800005",
+            "label": "Background image",
+            "name": "background_image",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
+            "type": "image",
+            "instructions": "Fills the header behind the stripe artwork. Optional.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6808a8800007",
+                        "operator": "==",
+                        "value": "large"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
         },
         {
-            "key": "field_6808a8800004",
-            "label": "Button",
-            "name": "button",
+            "key": "field_6808a8800006",
+            "label": "Image",
+            "name": "image",
             "aria-label": "",
-            "type": "link",
-            "instructions": "",
+            "type": "image",
+            "instructions": "Shown beside the text, in front of the stripe artwork. Optional.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6808a8800007",
+                        "operator": "==",
+                        "value": "large"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -80,5 +116,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778579230
+    "modified": 1793983141
 }

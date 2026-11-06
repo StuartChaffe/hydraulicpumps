@@ -49,6 +49,17 @@ function fixCssAssetPaths() {
     }
 }
 
+// Rebuild the stylesheets when .env changes (it holds VITE_SHOW_BREAKPOINTS)
+function watchEnvFile() {
+    const envFile = path.resolve('.env')
+    return {
+        name: 'watch-env-file',
+        transform(_, id) {
+            if (id.endsWith('.scss') && fs.existsSync(envFile)) this.addWatchFile(envFile)
+        },
+    }
+}
+
 function cleanBuildDirs(dirs) {
     let cleaned = false
     return {
@@ -107,9 +118,18 @@ function resolveGlob(baseDir, pattern) {
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
 
+    // Breakpoint label (see _settings.scss): only when VITE_SHOW_BREAKPOINTS=true,
+    // and only for `npm run watch` / `npm run development`, never `npm run production`.
+    // .env is re-read on every Sass compile, and watched, so toggling it applies
+    // without restarting `npm run watch`.
+    const isDevBuild = mode === 'development' || process.argv.includes('--watch')
+    const showBreakpoints = () =>
+        isDevBuild && loadEnv(mode, process.cwd(), '').VITE_SHOW_BREAKPOINTS === 'true'
+
     return {
         plugins: [
             cleanBuildDirs(['css', 'js']),
+            watchEnvFile(),
             sassGlob(),
             fixCssAssetPaths(),
             copyStatic(['fonts', 'images']),
@@ -140,6 +160,7 @@ export default defineConfig(({ mode }) => {
         css: {
             preprocessorOptions: {
                 scss: {
+                    additionalData: (source) => `$show-breakpoints-enabled: ${showBreakpoints()};\n${source}`,
                     silenceDeprecations: ['import', 'global-builtin'],
                 },
             },

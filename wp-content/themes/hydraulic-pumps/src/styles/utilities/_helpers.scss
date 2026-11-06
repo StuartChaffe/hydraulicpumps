@@ -9,8 +9,9 @@
 .u-italic { font-style: italic!important; }
 .u-caps { text-transform: uppercase!important; }
 .u-left-align { text-align: left!important; }
-.u-center { text-align: center!important; }
+.u-center, .has-text-align-center { text-align: center!important; }
 .u-right-align { text-align: right!important; }
+.f-center-align {align-items: center; }
 
 // Margins
 .mt-xxl { margin-top: var(--spacing-xxl)!important; }

@@ -1,18 +1,134 @@
 .page-header {
+	display: flex;
+	// align-items: center;
 	padding-top: var(--spacing-xl);
 	padding-bottom: var(--spacing-xl);
-	background-color: var(--color-primary);
-	color: var(--color-text-reversed);
+	position: relative;
+	isolation: isolate; // Keeps the image and artwork's negative z-index inside the header
+	overflow: hidden; // Clips the image to the rounded corners
+	background-color: var(--color-tertiary);
+	border-bottom-left-radius: var(--radius);
+	border-bottom-right-radius: var(--radius);
+
+	// Stripe artwork with a white panel that fades out (masking the left of the
+	// background image). Bottom-left, up to its natural 844px width at its natural
+	// proportions; if the block is taller, it stretches vertically to fill it
+	// (the SVG has preserveAspectRatio="none"). Above the image, below the content.
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		z-index: -1;
+		width: min(844px, 60%);
+		aspect-ratio: 844 / 522;
+		min-height: 100%;
+		background: url('../../src/images/banner-mask.svg') left bottom / 100% 100% no-repeat;
+		pointer-events: none;
+	}
 }
 
-.page-header__title {
-	color: var(--color-text-reversed);
+.page-header--large {
+	min-height: 522px;
 }
 
-.page-header__description {
-	margin-top: var(--spacing);
+.page-header--small {
+	min-height: 336px;
 }
 
-.page-header__button {
-	margin-top: var(--spacing-l);
+// Optional background image, covering the whole header
+.page-header__background {
+	position: absolute;
+	margin-left: auto;
+	inset: 0;
+	z-index: -2;
+	width: 80%;
+	max-width: none;
+	height: 100%;
+	object-fit: cover;
 }
+
+// Content and image side by side on desktop, stacked on mobile
+.page-header__inner {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-l);
+	width: 100%;
+
+	@include mq(medium) {
+		flex-direction: row;
+		gap: 0;
+	}
+}
+
+// Content is 50% wide on desktop for large, 70% for small
+.page-header__content {
+	min-width: 0;
+
+	@include mq(medium) {
+		flex: 0 0 50%;
+	}
+}
+
+// Large spans the full header, so pad the content to line its text up with
+// .container (centred at --container-width, with 1rem side padding)
+.page-header--large .page-header__content {
+	padding-inline: 1rem;
+
+	@include mq(medium) {
+		padding-left: calc(max(0px, (100% - var(--container-width)) / 2) + 1rem);
+		padding-right: var(--spacing-l);
+	}
+}
+
+// Optional image: the right 50% on desktop, tight against the header's right edge
+.page-header__media {
+	min-width: 0;
+	align-self: flex-end; // Sit on the bottom of the header
+
+	@include mq(medium) {
+		flex: 0 0 50%;
+	}
+}
+
+// No bottom padding when there's an image, so it sits flush with the bottom
+.page-header--has-media {
+	padding-bottom: 0;
+}
+
+// Small: content centred in the block, with centred text
+.page-header--small {
+	.page-header__inner {
+		justify-content: center;
+	}
+
+	.page-header__content {
+		text-align: center;
+
+		@include mq(medium) {
+			flex-basis: 70%;
+		}
+
+		.wp-block-buttons {
+			justify-content: center;
+		}
+	}
+}
+
+.page-header__image {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+// .page-header__title {
+// 	color: var(--color-text-reversed);
+// }
+
+// .page-header__description {
+// 	margin-top: var(--spacing);
+// }
+
+// .page-header__button {
+// 	margin-top: var(--spacing-l);
+// }

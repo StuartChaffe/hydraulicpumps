@@ -20,7 +20,15 @@ $breakpoints: (
 	xxxlarge: 100em
 );
 
-$show-breakpoints: (small, small-major, medium, medium-major, large, xlarge, xxlarge, xxxlarge);
+// Breakpoint label in the top-right corner, for development. Turn it on with
+// VITE_SHOW_BREAKPOINTS=true in .env; vite.config.js sets $show-breakpoints-enabled
+// and never enables it for `npm run production`.
+// (A map lookup rather than @if, as only variables may come before the @use below)
+$show-breakpoints-enabled: false !default;
+$show-breakpoints: map-get((
+	true: (small, small-major, medium, medium-major, large, xlarge, xxlarge, xxxlarge),
+	false: (),
+), $show-breakpoints-enabled);
 
 @use 'utilities/mq' with (
   $breakpoints: $breakpoints,

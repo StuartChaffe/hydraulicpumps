@@ -1,7 +1,7 @@
 {
     "name": "acf/page-header",
     "title": "Page Header",
-    "description": "Page header with title, description and button",
+    "description": "Page header with optional background image and image",
     "category": "custom-blocks",
     "icon": "cover-image",
     "keywords": ["header", "hero"],
