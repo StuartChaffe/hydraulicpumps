@@ -1,0 +1,51 @@
+// Call to action: a centred panel at --content-width with a pale navy frame
+// (like the tabs frame). Grey with the stripes (cta-mask.svg, already at 10%
+// opacity) or solid navy with reversed text.
+.cta {
+	&__panel {
+		position: relative;
+		isolation: isolate; // Keeps the stripes' negative z-index inside the panel
+		overflow: hidden;
+		padding: var(--spacing-l) var(--spacing);
+		background-color: var(--color-tertiary);
+		border: var(--spacing-xs) solid rgb(1 52 115 / 0.2);
+		background-clip: padding-box; // So the frame shows over the navy too
+		border-radius: var(--radius);
+		text-align: center;
+
+		@include mq(medium) {
+			padding: var(--spacing-l) var(--spacing-xl);
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+
+		.wp-block-heading {
+			color: var(--color-primary);
+		}
+
+		// Centred with the text (the theme doesn't load core's justification classes)
+		.wp-block-buttons {
+			justify-content: center;
+		}
+	}
+
+	&--mask &__panel::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: url('../../src/images/cta-mask.svg') left top / 100% 100% no-repeat;
+		pointer-events: none;
+	}
+
+	&--navy &__panel {
+		background-color: var(--color-primary);
+		color: var(--color-text-reversed);
+
+		.wp-block-heading {
+			color: var(--color-text-reversed);
+		}
+	}
+}

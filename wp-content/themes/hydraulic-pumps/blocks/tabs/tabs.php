@@ -1,13 +1,23 @@
 <?php
 // Each Tab child block outputs its own accordion toggle and panel. On the front
-// end the tab bar is built here from the children's labels; the editor shows
-// the tabs stacked instead.
+// end the tab bar is built here from the children's labels; in the editor the
+// children's toggles are laid out as the tabs instead (see tabs.scss).
+
+/**
+ * Passed in by ACF when it renders the block.
+ *
+ * @var bool          $is_preview True in the editor.
+ * @var WP_Block|null $wp_block   The block instance, for reading the Tab children.
+ */
+$is_preview = ! empty( $is_preview );
+$wp_block   = $wp_block ?? null;
+
 $allowed_blocks = array( 'acf/tab' );
 $template       = array( array( 'acf/tab' ), array( 'acf/tab' ) );
 $tabs           = array();
 
-if ( ! $is_preview && ! empty( $wp_block ) ) {
-	foreach ( $wp_block->parsed_block['innerBlocks'] as $inner ) {
+if ( ! $is_preview && $wp_block instanceof WP_Block ) {
+	foreach ( $wp_block->parsed_block['innerBlocks'] ?? array() as $inner ) {
 		if ( $inner['blockName'] !== 'acf/tab' ) {
 			continue;
 		}

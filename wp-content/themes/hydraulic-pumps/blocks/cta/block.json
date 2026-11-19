@@ -1,0 +1,14 @@
+{
+    "name": "acf/cta",
+    "title": "CTA",
+    "description": "Call to action panel with a heading, text and buttons",
+    "category": "custom-blocks",
+    "icon": "megaphone",
+    "keywords": ["cta", "call to action", "contact"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "cta.php"
+    },
+    "align": "full"
+}

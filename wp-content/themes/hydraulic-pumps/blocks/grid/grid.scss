@@ -102,6 +102,13 @@
 			inset: 0;
 			z-index: 2; // Above the front image
 		}
+
+		// No press effect: .btn:active's transform would make the link the
+		// ::before's containing block mid-click, shrinking it back to the
+		// button, so the click would land on the card and not follow the link
+		&.btn:active {
+			transform: none;
+		}
 	}
 
 	// Whole-card link style: the title is the link, and its ::before stretches

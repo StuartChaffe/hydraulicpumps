@@ -1,37 +1,49 @@
 <?php
-$accordion = get_field('accordion_items');
-$show_all = get_field('accordion_show_all');
-$title = get_field('title');
+$allowed_blocks = array( 'core/heading', 'core/paragraph' );
+$accordion      = get_field('accordion_items');
 
-if ($accordion) : ?>
+if ( $accordion ) : ?>
 <section class="block accordion">
+	<div class="container container--content">
+		<?php if ( is_admin() || ! empty( $content ) ) : ?><?php echo '<InnerBlocks allowedBlocks="' . esc_attr( wp_json_encode( $allowed_blocks ) ) . '" />'; ?><?php endif; ?>
+		<div class="accordion__inner">
+			<?php foreach ( $accordion as $item ) : ?>
+			<details class="accordion__item" id="<?php echo esc_attr( sanitize_title( $item['accordion_title'] ) ); ?>">
+				<summary class="accordion__handle">
+					<h3 class="accordion__title"><?php echo esc_html( $item['accordion_title'] ); ?></h3>
+					<span class="accordion__icon" aria-hidden="true"></span>
+				</summary>
+				<div class="accordion__body content">
+					<?php echo $item['accordion_body']; ?>
+				</div>
+			</details>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
 
-    <div class="container container--s">
+<?php if ( ! is_admin() ) :
+	$faq_entities = array_map( function( $item ) {
+		return array(
+			'@type'          => 'Question',
+			'name'           => $item['accordion_title'],
+			'acceptedAnswer' => array(
+				'@type' => 'Answer',
+				'text'  => wp_strip_all_tags( $item['accordion_body'] ),
+			),
+		);
+	}, $accordion );
+	$schema = array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'mainEntity' => $faq_entities,
+	);
+?>
+<script type="application/ld+json"><?php echo wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
+<?php endif; ?>
 
-        <?php if ($title) : ?>
-        <div class="block-heading accordion__heading">
-            <h2 class="accordion__heading"><?php echo esc_html($title); ?></h2>
-            <?php if ($show_all) : ?>
-            <div class="block-heading__actions accordion__actions">
-                <button class="accordion__show-all btn" data-show="<?php esc_attr_e('Show all', 'origin'); ?>" data-close="<?php esc_attr_e('Close all', 'origin'); ?>"><?php _e('Show all', 'origin'); ?></button>
-            </div>
-            <?php endif; ?>
-        </div>
-        <?php endif; ?>
-        
-        <?php foreach ($accordion as $item) : ?>
-        <details class="accordion__item" id="<?php echo sanitize_title($item['accordion_title']); ?>">
-            <summary class="accordion__handle">
-                <h3 class="accordion__title"><?php echo esc_html($item['accordion_title']); ?></h3>
-                <div class="accordion__icon"></div>
-            </summary>
-            <div class="accordion__body content">
-                <?php echo $item['accordion_body']; ?>
-            </div>
-        </details>
-        <?php endforeach; ?>
-
-    </div>
-
+<?php elseif ( is_admin() ) : ?>
+<section class="block accordion">
+	<div class="container container--content"><p>Add some accordion items.</p></div>
 </section>
 <?php endif; ?>

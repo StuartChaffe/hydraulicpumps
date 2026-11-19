@@ -20,7 +20,7 @@
 
 		@include mq(medium) {
 			display: flex;
-			gap: var(--spacing-s);
+			gap: var(--spacing-xs); // Matches the frame padding
 		}
 	}
 
@@ -253,6 +253,101 @@
 	&--front.is-ready &__item:not(.is-active) &__panel {
 		@include mq(medium) {
 			display: none;
+		}
+	}
+}
+
+// Editor: shown as tabs, not the accordion. Each Tab block's label sits in the
+// tab row and only one panel shows: the selected tab (or the one being edited),
+// otherwise the first. Each Tab block wrapper is a subgrid spanning the whole
+// grid, so its label can go in its own column and its panel across the row
+// below. The wrappers overlap, so only their contents take clicks.
+.tabs:not(.tabs--front) {
+	$max-tabs: 10;
+
+	.tabs__items > .acf-innerblocks-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		column-gap: var(--spacing-xs);
+
+		@for $i from 2 through $max-tabs {
+			&:has(> .wp-block:nth-child(#{$i} of .wp-block)) {
+				grid-template-columns: repeat(#{$i}, 1fr);
+			}
+		}
+
+		> .wp-block {
+			display: grid;
+			grid-column: 1 / -1;
+			grid-row: 1 / span 2;
+			grid-template-columns: subgrid;
+			grid-template-rows: subgrid;
+			max-width: none;
+			margin: 0;
+			pointer-events: none;
+		}
+
+		@for $i from 1 through $max-tabs {
+			> .wp-block:nth-child(#{$i} of .wp-block) .tabs__heading {
+				grid-column: #{$i};
+			}
+		}
+
+		// The "add block" button, under the tabs
+		> .block-list-appender {
+			grid-column: 1 / -1;
+			grid-row: 3;
+		}
+	}
+
+	.tabs__items .tabs__item {
+		display: contents;
+	}
+
+	.tabs__heading,
+	.tabs__panel {
+		pointer-events: auto;
+	}
+
+	.tabs__heading {
+		grid-row: 1;
+	}
+
+	.tabs__panel {
+		display: none;
+		grid-column: 1 / -1;
+		grid-row: 2;
+	}
+
+	// Styled like the front-end tabs
+	.tabs__toggle {
+		justify-content: center;
+		height: 100%;
+		padding: var(--spacing) var(--spacing-s);
+		background-color: rgb(255 255 255 / 0.8);
+		border-radius: var(--radius) var(--radius) 0 0;
+		font-size: var(--text-size-l);
+		font-weight: var(--font-weight-heavy);
+		letter-spacing: var(--heading-letter-spacing-s);
+		line-height: var(--leading-tight);
+		text-align: center;
+	}
+
+	.tabs__icon {
+		display: none;
+	}
+
+	// Which tab is showing
+	.tabs__items > .acf-innerblocks-container:not(:has(> .is-selected, > .has-child-selected)) > .wp-block:nth-child(1 of .wp-block),
+	.tabs__items > .acf-innerblocks-container > .wp-block:is(.is-selected, .has-child-selected) {
+		.tabs__panel {
+			display: flex;
+		}
+
+		.tabs__toggle {
+			background-color: var(--color-primary);
+			color: var(--color-text-reversed);
 		}
 	}
 }
