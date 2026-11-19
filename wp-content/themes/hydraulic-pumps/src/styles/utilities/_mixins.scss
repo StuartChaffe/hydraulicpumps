@@ -83,3 +83,34 @@
 	height: 100%;
 	object-fit: cover;
 }
+
+// Small pill-style tab button (FAQs category tabs, Content tabs). Grey, navy
+// when selected: pass the selector for the selected state, e.g.
+// '&[aria-pressed="true"]' or '&[aria-selected="true"]'.
+@mixin pill-tab($selected) {
+	padding: 0.4375rem 0.8125rem; // 7px 13px
+	background-color: var(--color-tertiary);
+	color: var(--color-text-base);
+	border: 0;
+	border-radius: var(--radius-s);
+	font: inherit;
+	font-size: var(--text-size-s);
+	font-weight: var(--font-weight-bold);
+	line-height: 1.33; // 24px at 18px
+	cursor: pointer;
+	transition: background-color var(--transition-base), color var(--transition-base);
+
+	&:hover {
+		background-color: var(--color-grey-light);
+	}
+
+	#{$selected} {
+		background-color: var(--color-primary);
+		color: var(--color-text-reversed);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+}

@@ -1,0 +1,14 @@
+{
+    "name": "acf/content-tabs",
+    "title": "Content Tabs",
+    "description": "Small tabs that switch the content below, e.g. a table per manufacturer",
+    "category": "custom-blocks",
+    "icon": "table-row-after",
+    "keywords": ["tabs", "table", "content"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "content-tabs.php"
+    },
+    "align": "full"
+}

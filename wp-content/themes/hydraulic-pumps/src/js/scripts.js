@@ -6,5 +6,6 @@ import './components/toggle';
 import './components/accordion';
 import './components/tabs';
 import './components/faqs';
+import './components/content-tabs';
 import './components/image-gallery';
 import './components/menu';

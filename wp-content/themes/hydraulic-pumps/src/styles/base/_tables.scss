@@ -1,27 +1,74 @@
+// Tables (the core Table block, and any other table). Pale navy frame and row
+// lines, lighter column lines, a white header row and grey on every other
+// body row. Scrolls sideways on small screens rather than squashing.
+.wp-block-table {
+	overflow-x: auto;
+	margin: 0 0 var(--spacing-xl); // Same as blocks (.block in _layout.scss)
+
+	// Caption (core's "Add caption" under the table)
+	figcaption {
+		margin-top: var(--spacing-xs);
+		color: var(--color-grey-dark);
+		font-size: var(--text-size-xs);
+	}
+}
+
 table {
+	--table-border: rgb(1 52 115 / 0.2); // #ccd6e3 on white, like the CTA/tabs frame
+	--table-divider: #dfe2eb;
+	width: 100%;
 	margin-bottom: 1em;
+	border: 1px solid var(--table-border);
+	border-collapse: collapse;
+	color: var(--color-text-base);
+	font-size: var(--text-size-s);
+	line-height: 1.36; // 30px at 22px
+
+	@include mq(medium) {
+		font-size: 1.375rem; // 22px
+	}
+
+	.wp-block-table & {
+		margin-bottom: 0;
+	}
 }
 
-table th,
-table td {
-	padding: 0.5em;
-	border-bottom: 1px solid var(--color-grey-light);
+// :is() with .wp-block-table table lifts these above core's .wp-block-table td
+// rules, which the editor loads (the front end dequeues them)
+$table: ':is(table, .wp-block-table table)';
+
+#{$table} th,
+#{$table} td {
+	padding: 0.75rem 1.25rem 0.8125rem 1.5625rem; // 12px 20px 13px 25px
+	border: 0;
+	border-top: 1px solid var(--table-border);
 	text-align: left;
+	vertical-align: middle;
 	-webkit-font-smoothing: antialiased;
+
+	+ th,
+	+ td {
+		border-left: 1px solid var(--table-divider);
+	}
 }
 
-table th {
-	border-width: 2px;
+#{$table} th {
+	font-weight: var(--font-weight-bold);
 }
 
-table tr:last-child td {
-	border-bottom: none;
+// Header row: white. The core block's head section is a <thead>; a table
+// without one has no header row.
+#{$table} thead {
+	border-bottom: 0;
+	background-color: var(--color-white);
 }
 
-table tr:nth-child(even) {
-	background: var(--color-grey-light);
+// Every other body row grey, starting with the first
+#{$table} tbody tr:nth-child(odd) {
+	background-color: var(--color-tertiary);
 }
 
-table tbody tr:hover {
-	background: var(--color-grey);
+#{$table} tfoot {
+	border-top: 0;
+	font-weight: var(--font-weight-bold);
 }

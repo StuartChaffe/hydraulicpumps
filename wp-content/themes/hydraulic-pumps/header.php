@@ -19,3 +19,4 @@
 <div class="global-container">
 <?php get_template_part('partials/global-alert'); ?>
 <?php get_template_part('partials/site-header'); ?>
+<?php get_template_part('partials/breadcrumb'); ?>

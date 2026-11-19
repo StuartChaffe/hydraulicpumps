@@ -1,0 +1,51 @@
+// Split Intro: heading on the left, the rest on the right, in two equal
+// columns across the container. Stacks on mobile. In the editor the inner
+// blocks are wrapped in .acf-innerblocks-container, so that's the grid there.
+.split-intro {
+	&__inner,
+	&__inner > .acf-innerblocks-container {
+		@include mq(medium) {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-auto-flow: row dense;
+			column-gap: var(--spacing-xl);
+			align-items: start;
+		}
+	}
+
+	// The editor's wrapper takes the layout instead
+	&__inner:has(> .acf-innerblocks-container) {
+		display: block;
+	}
+
+	// First heading: left column, spanning however many rows the text needs
+	&__inner > .wp-block-heading:first-child,
+	&__inner > .acf-innerblocks-container > .wp-block-heading:first-child {
+		margin-bottom: var(--spacing);
+
+		@include mq(medium) {
+			grid-column: 1;
+			grid-row: 1 / span 20;
+			margin-bottom: 0;
+		}
+	}
+
+	// Everything else: right column
+	&__inner > :not(:first-child),
+	&__inner > .acf-innerblocks-container > :not(:first-child) {
+		@include mq(medium) {
+			grid-column: 2;
+		}
+	}
+
+	// Space between paragraphs on the right (the theme's p:last-of-type rule
+	// would otherwise remove it from the last one only)
+	p {
+		margin-bottom: var(--spacing-s);
+	}
+
+	&__inner > :last-child,
+	&__inner > .acf-innerblocks-container > :last-child {
+		margin-bottom: 0;
+	}
+}

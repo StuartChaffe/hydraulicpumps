@@ -1,0 +1,111 @@
+// Content Tabs: pill tabs (like the FAQs category tabs) that switch the panel
+// below. .content-tabs--front is the front end only. .is-ready is added by
+// content-tabs.js, before which the first panel shows.
+.content-tabs {
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+		margin-bottom: var(--spacing);
+	}
+
+	&__tab {
+		@include pill-tab('&[aria-selected="true"]');
+	}
+
+	&__panel {
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Which panel shows
+	&--front:not(.is-ready) &__item:not(:first-child),
+	&--front.is-ready &__item:not(.is-active) {
+		display: none;
+	}
+}
+
+// Editor: each Content Tab's label sits in a row of tabs and only one panel
+// shows: the selected tab (or the one being edited), otherwise the first. Same
+// approach as the Tabs block: each Content Tab wrapper is a subgrid spanning
+// the whole grid, so its label can take its own column and its panel the row
+// below. The wrappers overlap, so only their contents take clicks.
+.content-tabs:not(.content-tabs--front) {
+	$max-tabs: 10;
+
+	.content-tabs__items > .acf-innerblocks-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		column-gap: var(--spacing-xs);
+
+		@for $i from 2 through $max-tabs {
+			&:has(> .wp-block:nth-child(#{$i} of .wp-block)) {
+				grid-template-columns: repeat(#{$i}, max-content) 1fr;
+			}
+		}
+
+		> .wp-block {
+			display: grid;
+			grid-column: 1 / -1;
+			grid-row: 1 / span 2;
+			grid-template-columns: subgrid;
+			grid-template-rows: subgrid;
+			max-width: none;
+			margin: 0;
+			pointer-events: none;
+		}
+
+		@for $i from 1 through $max-tabs {
+			> .wp-block:nth-child(#{$i} of .wp-block) .content-tabs__label {
+				grid-column: #{$i};
+			}
+		}
+
+		> .block-list-appender {
+			grid-column: 1 / -1;
+			grid-row: 3;
+		}
+	}
+
+	.content-tabs__items .content-tabs__item {
+		display: contents;
+	}
+
+	.content-tabs__label,
+	.content-tabs__panel {
+		pointer-events: auto;
+	}
+
+	.content-tabs__label {
+		@include pill-tab('&.is-current');
+		grid-row: 1;
+		align-self: start;
+		margin-bottom: var(--spacing);
+	}
+
+	.content-tabs__panel {
+		display: none;
+		grid-column: 1 / -1;
+		grid-row: 2;
+	}
+
+	.content-tabs__items > .acf-innerblocks-container:not(:has(> .is-selected, > .has-child-selected)) > .wp-block:nth-child(1 of .wp-block),
+	.content-tabs__items > .acf-innerblocks-container > .wp-block:is(.is-selected, .has-child-selected) {
+		.content-tabs__panel {
+			display: block;
+		}
+
+		.content-tabs__label {
+			background-color: var(--color-primary);
+			color: var(--color-text-reversed);
+		}
+	}
+}
+
+// The heading/paragraph straight above is the block's intro, so it sits
+// closer than the usual --spacing-xl before a block (see _layout.scss)
+#content > *:not(section):has(+ .content-tabs) {
+	margin-bottom: var(--spacing);
+}

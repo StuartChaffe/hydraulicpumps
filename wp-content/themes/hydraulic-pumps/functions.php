@@ -23,6 +23,8 @@ require_once( get_template_directory() . '/lib/vendors.php' );
 
 // Helper functions
 require_once( get_template_directory() . '/lib/helpers.php' );
+// Breadcrumbs
+require_once( get_template_directory() . '/lib/breadcrumbs.php' );
 
 // Environment indicator
 require_once( get_template_directory() . '/lib/env-indicator.php' );

@@ -1,0 +1,13 @@
+{
+    "name": "acf/content-tab",
+    "title": "Content Tab",
+    "description": "A single tab inside the Content Tabs block",
+    "category": "custom-blocks",
+    "icon": "table-row-after",
+    "parent": ["acf/content-tabs"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "content-tab.php"
+    }
+}

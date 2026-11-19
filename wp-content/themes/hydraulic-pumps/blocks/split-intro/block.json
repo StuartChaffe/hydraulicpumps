@@ -1,0 +1,14 @@
+{
+    "name": "acf/split-intro",
+    "title": "Split Intro",
+    "description": "Large heading on the left, text on the right",
+    "category": "custom-blocks",
+    "icon": "columns",
+    "keywords": ["intro", "heading", "text", "columns"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "split-intro.php"
+    },
+    "align": "full"
+}
