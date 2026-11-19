@@ -18,9 +18,10 @@
 		background-color: var(--color-white);
 		transition: background-color var(--transition-base);
 
-		& + & {
-			border-top: var(--accordion-border);
-		}
+		// Every item has a top line, pulled up under the frame so the first
+		// visible one is hidden (works when the FAQs block filters items out)
+		margin-top: -1px;
+		border-top: var(--accordion-border);
 
 		&[open] {
 			background-color: var(--color-tertiary);
@@ -123,6 +124,11 @@
 
 		a {
 			color: inherit;
+		}
+
+		// Bold callouts, like the engineer's advice
+		strong {
+			color: var(--color-primary);
 		}
 	}
 }

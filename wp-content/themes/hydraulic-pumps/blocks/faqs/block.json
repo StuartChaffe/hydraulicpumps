@@ -1,0 +1,14 @@
+{
+    "name": "acf/faqs",
+    "title": "FAQs",
+    "description": "FAQs by category (with filter tabs) or hand-picked",
+    "category": "custom-blocks",
+    "icon": "editor-help",
+    "keywords": ["faq", "faqs", "questions", "accordion"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "faqs.php"
+    },
+    "align": "full"
+}
