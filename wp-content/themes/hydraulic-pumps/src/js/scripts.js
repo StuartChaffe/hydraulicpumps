@@ -4,5 +4,6 @@ import './components/no-js';
 import './components/unsupported-browsers';
 import './components/toggle';
 import './components/accordion';
+import './components/tabs';
 import './components/image-gallery';
 import './components/menu';

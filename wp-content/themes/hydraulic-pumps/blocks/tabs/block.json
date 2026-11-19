@@ -1,0 +1,14 @@
+{
+    "name": "acf/tabs",
+    "title": "Tabs",
+    "description": "Tabbed panels with a background image. Becomes an accordion on mobile",
+    "category": "custom-blocks",
+    "icon": "index-card",
+    "keywords": ["tabs", "accordion", "markets"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "tabs.php"
+    },
+    "align": "full"
+}

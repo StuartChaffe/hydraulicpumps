@@ -56,3 +56,12 @@ if (!function_exists('dump_exit')) {
         exit;
     }
 }
+
+/**
+ * ID for a tab in the Tabs block, from its label (e.g. "Plant & Machinery" →
+ * "plant-machinery"), so a link to #plant-machinery opens that tab. Shared by
+ * the Tabs and Tab block templates so their IDs match.
+ */
+function origin_tab_id( $label ) {
+	return sanitize_title( $label ) ?: 'tab';
+}

@@ -1,0 +1,21 @@
+<svg preserveAspectRatio="none" width="1062" height="477" viewBox="0 0 1062 477" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mask group">
+<mask id="mask0_0_12" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1062" height="477">
+<path id="Rectangle 72" d="M0 0H1062V477H20C8.9543 477 0 468.046 0 457V0Z" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_0_12)">
+<path id="Rectangle 75" d="M-152.878 170L771.142 693.481L536.02 1108.51L-370.599 594.885C-380.209 589.44 -383.586 577.235 -378.142 567.625L-152.878 170Z" fill="#013473"/>
+<path id="Rectangle 74" d="M-302.878 170L621.142 693.48L386.02 1108.51L-520.599 594.884C-530.209 589.44 -533.586 577.235 -528.142 567.624L-302.878 170Z" fill="#F5F5F5"/>
+<path id="Rectangle 76" opacity="0.8" d="M-61.6348 177.932L534.726 515.785L509.483 560.343L-69.4762 232.348C-79.0868 226.903 -82.464 214.699 -77.0193 205.088L-61.6348 177.932Z" fill="url(#paint0_linear_0_12)"/>
+<path id="Rectangle 78" opacity="0.6" d="M-823.757 -222.793L75.0198 286.113L75.0196 345.245L-849 -178.235L-823.757 -222.793Z" fill="#F5F5F5"/>
+<path id="Rectangle 77" opacity="0.4" d="M-151.554 7L772.466 530.48L721.02 621.29L-185.598 107.668C-195.209 102.224 -198.586 90.0189 -193.141 80.4083L-151.554 7Z" fill="white"/>
+<path id="Rectangle 73" d="M-356.878 170L567.142 693.48L332.019 1108.51L-574.599 594.884C-584.21 589.44 -587.587 577.235 -582.142 567.624L-356.878 170Z" fill="#EE3D33"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_12" x1="-35.5" y1="216.131" x2="522.105" y2="538.064" gradientUnits="userSpaceOnUse">
+<stop stop-color="#013473"/>
+<stop offset="1" stop-color="white"/>
+</linearGradient>
+</defs>
+</svg>
