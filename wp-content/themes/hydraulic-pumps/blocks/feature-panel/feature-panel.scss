@@ -1,0 +1,48 @@
+// Content and an optional image side by side on desktop, stacked on mobile
+// (image first). The image goes left or right via --image-left/--image-right.
+.feature-panel {
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-l);
+
+		@include mq(medium) {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+
+	&__content {
+		@include mq(medium) {
+			flex: 1;
+		}
+
+		.wp-block-heading {
+			color: var(--color-primary);
+		}
+	}
+
+	&__media {
+		order: -1; // Image above the content on mobile
+
+		@include mq(medium) {
+			flex: 0 0 47%;
+			order: 0;
+		}
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 5 / 4;
+		object-fit: cover;
+		border-radius: var(--radius-s);
+	}
+
+	&--image-left &__media {
+		@include mq(medium) {
+			order: -1;
+		}
+	}
+}

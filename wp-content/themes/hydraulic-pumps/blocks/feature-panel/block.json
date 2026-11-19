@@ -1,0 +1,14 @@
+{
+    "name": "acf/feature-panel",
+    "title": "Feature Panel",
+    "description": "Content with an image to the left or right",
+    "category": "custom-blocks",
+    "icon": "align-pull-right",
+    "keywords": ["text", "image", "feature"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "feature-panel.php"
+    },
+    "align": "full"
+}

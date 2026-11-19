@@ -28,6 +28,16 @@ p.has-small-font-size {
 	line-height: var(--leading-base);
 }
 
+// The editor's S/M/L/XL sizes on headings map to the heading scale, so any
+// heading level can look like another: XL = h1, L = h2, M = h3, S = h4.
+// !important beats WordPress's own preset classes in the editor.
+:is(h1, h2, h3, h4, h5, h6) {
+	&.has-x-large-font-size { font-size: var(--text-size-3xl) !important; letter-spacing: var(--heading-letter-spacing); }
+	&.has-large-font-size { font-size: var(--text-size-2xl) !important; letter-spacing: var(--heading-letter-spacing-s); }
+	&.has-medium-font-size { font-size: var(--text-size-xl) !important; letter-spacing: var(--heading-letter-spacing-s); }
+	&.has-small-font-size { font-size: var(--text-size-l) !important; letter-spacing: var(--heading-letter-spacing-s); }
+}
+
 ul,
 ol {
 	list-style: none;
@@ -67,7 +77,8 @@ h2,
 h3,
 h4,
 h5 {
-	margin: 0;
+	margin-top: 0;
+	margin-bottom: var(--spacing-s);
 	font-family: var(--font-heading);
 	line-height: var(--leading-tight);
 	letter-spacing: var(--heading-letter-spacing-s);
