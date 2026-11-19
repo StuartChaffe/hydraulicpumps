@@ -89,3 +89,8 @@ div[data-type="core/button"] div[data-block] {
 .is-root-container > .wp-block:not([data-type^="acf/"]):last-child {
 	margin-bottom: var(--spacing-xl);
 }
+
+/* Centred loose paragraphs and headings use the small container, matching _layout.scss */
+.is-root-container > :is(p, h1, h2, h3, h4, h5, h6).wp-block.has-text-align-center {
+	max-width: var(--container-width-s);
+}

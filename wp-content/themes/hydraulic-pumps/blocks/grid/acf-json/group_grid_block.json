@@ -1,0 +1,190 @@
+{
+    "key": "group_grid_block",
+    "title": "Block/Grid",
+    "fields": [
+        {
+            "key": "field_grid_link_style",
+            "label": "Link style",
+            "name": "link_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "How the link on each card looks.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "link": "Text link",
+                "button": "Red button",
+                "card": "Whole card"
+            },
+            "default_value": "link",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_grid_items",
+            "label": "Items",
+            "name": "items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "1 to 4 cards, shown in a single row.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 1,
+            "max": 4,
+            "collapsed": "field_grid_title",
+            "button_label": "Add Item",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_grid_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_grid_items",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_grid_content",
+                    "label": "Content",
+                    "name": "content",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_grid_items",
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_grid_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_grid_items",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_grid_background",
+                    "label": "Background image",
+                    "name": "background_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Optional. Fills the card behind the stripes.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_grid_items"
+                },
+                {
+                    "key": "field_grid_image",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Optional. Sits in front, bottom right. A cut-out PNG works best.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_grid_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/grid"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1795600001
+}

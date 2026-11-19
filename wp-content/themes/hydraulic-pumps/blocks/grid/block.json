@@ -1,0 +1,14 @@
+{
+    "name": "acf/grid",
+    "title": "Grid",
+    "description": "A row of 1 to 4 cards with a title, text, optional link and optional images",
+    "category": "custom-blocks",
+    "icon": "grid-view",
+    "keywords": ["grid", "cards", "columns", "services"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "grid.php"
+    },
+    "align": "full"
+}
