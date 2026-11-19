@@ -1,8 +1,8 @@
 .page-header {
 	display: flex;
 	// align-items: center;
-	padding-top: var(--spacing-xl);
-	padding-bottom: var(--spacing-xl);
+	// padding-top: var(--spacing-xl);
+	// padding-bottom: var(--spacing-xl);
 	position: relative;
 	isolation: isolate; // Keeps the image and artwork's negative z-index inside the header
 	overflow: hidden; // Clips the image to the rounded corners
@@ -35,7 +35,7 @@
 }
 
 .page-header--large {
-	min-height: 522px;
+	min-height: 500px;
 }
 
 .page-header--small {
@@ -74,12 +74,16 @@
 	@include mq(medium) {
 		flex: 0 0 50%;
 	}
+	p {
+		font-size: var(--text-size-m);
+	}
 }
 
 // Large spans the full header, so pad the content to line its text up with
 // .container (centred at --container-width, with 1rem side padding)
 .page-header--large .page-header__content {
-	padding-inline: 1rem;
+	// padding-inline: 1rem;
+	padding-top: var(--spacing-xl);
 
 	@include mq(medium) {
 		padding-left: calc(max(0px, (100% - var(--container-width)) / 2) + 1rem);

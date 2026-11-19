@@ -28,3 +28,12 @@
 .container--s {
 	max-width: var(--content-width);
 }
+
+// Core blocks placed straight into the content (paragraphs, headings, tables,
+// lists etc.) sit at --content-width, lined up with .container--s. Custom
+// blocks render as <section> and manage their own width; .alignfull opts out.
+#content > *:not(section, .alignfull) {
+	max-width: var(--content-width);
+	margin-inline: auto;
+	padding-inline: 1rem;
+}

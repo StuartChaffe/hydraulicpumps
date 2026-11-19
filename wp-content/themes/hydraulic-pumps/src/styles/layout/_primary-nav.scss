@@ -13,13 +13,15 @@
 	text-decoration: none;
 	font-weight: var(--font-weight-semi);
 	font-size: var(--text-size-s);
-	padding: 0.75rem 0;
+	padding: 0.75rem 1rem;
 
 	&:hover {
 		color: var(--color-text-reversed);
+		text-decoration: none;
+		background: var(--color-primary-darker);
 	}
 	&[aria-current="page"] {
-		text-decoration: underline;
+		background: var(--color-primary-darker);
 	}
 }
 

@@ -29,8 +29,14 @@
         },
         "typography": {
             "customFontSize": false,
-            "defaultFontSizes": true,
-            "dropCap": false
+            "defaultFontSizes": false,
+            "dropCap": false,
+            "fontSizes": [
+                { "name": "Small",       "slug": "small",   "size": "var(--text-size-s)" },
+                { "name": "Medium",      "slug": "medium",  "size": "var(--text-size-m)" },
+                { "name": "Large",       "slug": "large",   "size": "var(--text-size-l)" },
+                { "name": "Extra Large", "slug": "x-large", "size": "var(--text-size-xl)" }
+            ]
         }
     }
 }
