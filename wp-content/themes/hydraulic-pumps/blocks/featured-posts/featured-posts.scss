@@ -1,0 +1,29 @@
+// Featured Posts. The cards and grid are shared with the Posts block (see
+// posts.scss); this is the header: heading on the left, "View all" button on
+// the right, lined up with the heading's last line. Stacks on mobile.
+.featured-posts {
+	&__header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: var(--spacing-s) var(--spacing);
+
+		+ .posts__grid {
+			margin-top: 2.5rem; // 40px
+		}
+	}
+
+	&__intro {
+		flex: 1 1 30rem;
+
+		> :last-child,
+		> .acf-innerblocks-container > :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__all {
+		flex: none;
+	}
+}

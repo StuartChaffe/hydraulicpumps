@@ -7,6 +7,7 @@ function origin_register_image_sizes() {
 	add_image_size( 'Banner', 600, 450, true );
 	add_image_size( 'Square', 400, 400, true );
 	add_image_size( 'Gallery', 1400, 800, true );
+	add_image_size( 'Card', 900, 600, true ); // Article cards (3:2), cropped from the centre on upload
 }
 add_action( 'after_setup_theme', 'origin_register_image_sizes' );
 

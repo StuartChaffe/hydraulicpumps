@@ -1,0 +1,161 @@
+// Posts block, plus the article card and grid it shares with Featured Posts.
+
+// Article card (partials/post-card.php). The title link's ::before covers the
+// card, so the whole card is clickable; hovering underlines the title and
+// nudges the arrow.
+.post-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-s);
+
+	&__media {
+		overflow: hidden;
+		aspect-ratio: 3 / 2; // Matches the Card image size
+		background-color: var(--color-tertiary); // Shows when there's no image
+		border-radius: var(--radius-s);
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform var(--transition-fade);
+	}
+
+	&:hover &__image {
+		transform: scale(1.03);
+	}
+
+	// Hidden for now; the markup stays so it can come back
+	&__date {
+		display: none;
+	}
+
+	&__title {
+		margin: 0;
+		color: var(--color-primary);
+		font-size: var(--text-size-l);
+		line-height: 1.25;
+		letter-spacing: var(--heading-letter-spacing-s);
+	}
+
+	&__link {
+		color: inherit;
+		text-decoration: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+		}
+
+		&:focus-visible {
+			outline: none;
+
+			&::before {
+				outline: 2px solid var(--color-primary);
+				outline-offset: 4px;
+				border-radius: var(--radius-s);
+			}
+		}
+	}
+
+	&:hover &__link {
+		text-decoration: underline;
+	}
+
+	&__excerpt {
+		margin: 0;
+		font-size: var(--text-size-s);
+		line-height: 1.33; // 24px at 18px
+	}
+
+	// "Read the article": red with the arrow, like the text-link buttons. Pushed
+	// to the bottom so it lines up across a row (cards stretch to the row height)
+	&__more {
+		margin-top: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		color: var(--color-secondary);
+		font-size: var(--text-size-s);
+		font-weight: var(--font-weight-semi);
+
+		&::after {
+			content: '';
+			width: 15px;
+			height: 12px;
+			background-color: currentColor;
+			mask: url('../../src/images/arrow.svg') center / contain no-repeat;
+			transition: transform var(--transition-base);
+		}
+	}
+
+	&:hover &__more {
+		color: var(--color-secondary-darker);
+
+		&::after {
+			transform: translateX(0.2em);
+		}
+	}
+}
+
+// Card grid: 1, then 2, then 3 across, with more space between rows
+.posts__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--spacing-l) var(--spacing);
+
+	@include mq(medium) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@include mq(large) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		row-gap: 3.75rem; // 60px
+	}
+
+	* + & {
+		margin-top: var(--spacing-l);
+	}
+}
+
+.posts {
+	&__filters {
+		* + & {
+			margin-top: var(--spacing-l);
+		}
+	}
+
+	&__filters-title {
+		margin-bottom: var(--spacing-s);
+		color: var(--color-primary);
+		font-size: var(--text-size-s);
+		font-weight: var(--font-weight-bold);
+		letter-spacing: 0;
+	}
+
+	&__filter-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+	}
+
+	&__filter {
+		@include pill-tab('&[aria-pressed="true"]');
+	}
+
+	&__more {
+		display: flex;
+		justify-content: center;
+		margin-top: var(--spacing-l);
+
+		&:has(> [hidden]) {
+			display: none;
+		}
+	}
+
+}

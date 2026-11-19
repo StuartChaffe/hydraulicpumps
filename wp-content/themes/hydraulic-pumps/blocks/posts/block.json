@@ -1,0 +1,14 @@
+{
+    "name": "acf/posts",
+    "title": "Posts",
+    "description": "All posts, filtered by category, with a load more button",
+    "category": "custom-blocks",
+    "icon": "grid-view",
+    "keywords": ["posts", "news", "articles", "blog"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "posts.php"
+    },
+    "align": "full"
+}

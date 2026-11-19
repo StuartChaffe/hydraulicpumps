@@ -97,6 +97,12 @@
 		.wp-block-buttons {
 			justify-content: center;
 		}
+
+		// Same measure as centred loose paragraphs (see _layout.scss)
+		p {
+			max-width: var(--container-width-s);
+			margin-inline: auto;
+		}
 	}
 }
 

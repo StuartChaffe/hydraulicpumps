@@ -1,0 +1,14 @@
+{
+    "name": "acf/featured-posts",
+    "title": "Featured Posts",
+    "description": "Latest posts, latest from a category, or hand-picked posts topped up with the latest",
+    "category": "custom-blocks",
+    "icon": "star-filled",
+    "keywords": ["posts", "featured", "news", "articles"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "featured-posts.php"
+    },
+    "align": "full"
+}
