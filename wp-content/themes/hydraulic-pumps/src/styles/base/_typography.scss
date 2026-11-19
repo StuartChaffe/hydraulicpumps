@@ -2,7 +2,7 @@ p {
 	margin-top: 0;
 	margin-bottom: var(--spacing);
 	line-height: var(--leading-base);
-	// font-size: var(--text-size-base);
+	font-size: var(--text-size-m); // Default; "Small" in the editor switches to --text-size-s
 	&:last-of-type {
 		margin-bottom: 0;
 	}

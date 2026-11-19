@@ -83,3 +83,9 @@ div[data-type="core/button"] div[data-block] {
 .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
 	max-width: 100%;
 }
+
+/* Last loose core block before a custom block, or at the end: --spacing-xl below, matching _layout.scss */
+.is-root-container > .wp-block:not([data-type^="acf/"]):has(+ .wp-block[data-type^="acf/"]),
+.is-root-container > .wp-block:not([data-type^="acf/"]):last-child {
+	margin-bottom: var(--spacing-xl);
+}

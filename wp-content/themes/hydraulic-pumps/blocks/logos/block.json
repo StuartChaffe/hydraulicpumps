@@ -1,0 +1,14 @@
+{
+    "name": "acf/logos",
+    "title": "Logos",
+    "description": "A row of logos, six per row on desktop, extra rows centred",
+    "category": "custom-blocks",
+    "icon": "images-alt2",
+    "keywords": ["logos", "partners", "clients", "brands"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "logos.php"
+    },
+    "align": "full"
+}

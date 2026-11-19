@@ -1,0 +1,38 @@
+// Six per row from medium (three on mobile). Extra logos wrap onto a new row,
+// centred. Logos are capped at --logo-max-height so they read at a similar size.
+.logos {
+	--logos-per-row: 3;
+	--logo-max-height: 2.5rem; // 40px, closest match to the Figma sizes
+
+	@include mq(medium) {
+		--logos-per-row: 6;
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: var(--gap);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__item {
+		flex: 0 0 calc((100% - (var(--logos-per-row) - 1) * var(--gap)) / var(--logos-per-row));
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+	}
+
+	&__image {
+		display: block;
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: var(--logo-max-height);
+		object-fit: contain;
+	}
+}

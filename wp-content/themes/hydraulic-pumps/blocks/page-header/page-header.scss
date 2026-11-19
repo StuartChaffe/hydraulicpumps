@@ -86,7 +86,7 @@
 	padding-top: var(--spacing-xl);
 
 	@include mq(medium) {
-		padding-left: calc(max(0px, (100% - var(--container-width)) / 2) + 1rem);
+		padding-left: calc(max(0px, (100% - var(--content-width)) / 2) + 1rem);
 		padding-right: var(--spacing-l);
 	}
 }

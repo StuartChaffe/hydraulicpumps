@@ -1,0 +1,86 @@
+{
+    "key": "group_logos_block",
+    "title": "Block\/Logos",
+    "fields": [
+        {
+            "key": "field_logos_repeater",
+            "label": "Logos",
+            "name": "logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Six per row on desktop. Any more wrap onto a new row, centred.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Logo",
+            "sub_fields": [
+                {
+                    "key": "field_logos_image",
+                    "label": "Logo",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": { "width": "40", "class": "", "id": "" },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_logos_repeater"
+                },
+                {
+                    "key": "field_logos_alt",
+                    "label": "Alt text",
+                    "name": "alt",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Usually the company name. Leave blank to use the alt text from the media library.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": { "width": "60", "class": "", "id": "" },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g. Bosch Rexroth",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_logos_repeater"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/logos"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1795564800
+}

@@ -46,6 +46,7 @@
 	--radius: 20px;
 
 	--content-width: 68.75rem; // 1100px
+	--container-width-s: 51.5625rem; // 825px
 	--container-width: 85rem; // 1360px
 	--container-width-l: 93.75rem; // 1500px
 
@@ -67,7 +68,7 @@
 	--text-size-l: 1.5rem;
 	--text-size-m: 1.3rem;
 	--text-size-base: 1.1rem;
-	--text-size-s: 1rem;
+	--text-size-s: 1.125rem; // 18px
 	--text-size-xs: 0.8rem;
 
 	--spacing-xxl: 6.25rem; // 100px
@@ -88,7 +89,7 @@
 		--text-size-l: 1.5rem;
 		--text-size-m: 1.3rem;
 		--text-size-base: 1.1rem;
-		--text-size-s: 1rem;
+		--text-size-s: 1.125rem; // 18px
 		--text-size-xs: 0.8rem;
 
 		--spacing-xxl: 6.25rem; // 100px
