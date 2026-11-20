@@ -90,7 +90,7 @@
 // The Pump Finder page's bigger bar: a grey frame round a white input box
 // and a tall button
 .pump-search--large {
-	gap: 6px;
+	gap: var(--spacing-xs);
 	max-width: 730px;
 	margin-inline: auto;
 	padding: var(--spacing-xs);

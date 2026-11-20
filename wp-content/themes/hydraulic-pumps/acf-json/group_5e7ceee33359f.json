@@ -232,7 +232,7 @@
             "name": "pump_finder_page",
             "aria-label": "",
             "type": "page_link",
-            "instructions": "Where pump searches go (the page with the Pump Finder block). Leave empty to use /pumpfinder/.",
+            "instructions": "Where pump searches go (the page with the Pump Finder block). Leave empty to use /pump-finder/.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

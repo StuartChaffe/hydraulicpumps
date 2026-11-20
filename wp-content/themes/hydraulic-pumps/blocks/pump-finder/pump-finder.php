@@ -29,7 +29,7 @@ $yes = function ( $name, $brand, $turnaround ) use ( $field, $images ) {
 	);
 	$button_url = add_query_arg( HP_PUMP_QUERY_VAR, rawurlencode( $name ), $button['url'] ); // So the booking knows which pump
 	?>
-	<div class="pump-result pump-result--yes" role="status">
+	<div class="pump-result pump-result--yes">
 		<div class="pump-result__top">
 			<div class="pump-result__answer">
 				<img class="pump-result__icon" src="<?php echo esc_url( $images . 'tick.svg' ); ?>" width="54" height="48" alt="">
@@ -72,7 +72,7 @@ $yes = function ( $name, $brand, $turnaround ) use ( $field, $images ) {
 
 $no = function ( $name ) use ( $field, $images ) {
 	?>
-	<div class="pump-result pump-result--no" role="status">
+	<div class="pump-result pump-result--no">
 		<div class="pump-result__top">
 			<div class="pump-result__answer">
 				<img class="pump-result__icon" src="<?php echo esc_url( $images . 'cross.svg' ); ?>" width="54" height="56" alt="">
@@ -100,6 +100,8 @@ $no = function ( $name ) use ( $field, $images ) {
 			'is_target'   => ! $is_preview,
 		) ); ?>
 
+		<?php // The answer. On this page, searches swap it in place (src/js/components/pump-search.js), so it's a live region ?>
+		<div class="pump-finder__results" aria-live="polite">
 		<?php if ( $is_preview ) : // Editor: both answers, labelled, with an example pump ?>
 			<p class="pump-finder__label"><?php esc_html_e( 'When we have the pump', 'origin' ); ?></p>
 			<?php $yes( 'A10VSO28DFR', (object) array( 'name' => 'Bosch Rexroth' ), '5–7 working days' ); ?>
@@ -114,5 +116,6 @@ $no = function ( $name ) use ( $field, $images ) {
 			hp_pump_finder_log_miss( $term ); // Pumps → Not found
 			$no( $term );
 		endif; ?>
+		</div>
 	</div>
 </section>

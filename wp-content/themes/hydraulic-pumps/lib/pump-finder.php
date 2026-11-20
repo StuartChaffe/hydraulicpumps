@@ -29,16 +29,29 @@ add_action( 'save_post_pump', function ( $post_id, $post ) {
 }, 10, 2 );
 
 /**
- * The pump finder page: set in Theme Settings, or the page at /pumpfinder/.
+ * The pump finder page: set in Theme Settings, or the page at /pump-finder/.
  */
 function hp_pump_finder_url() {
 	$url = function_exists( 'get_field' ) ? get_field( 'pump_finder_page', 'option' ) : ''; // A page link field, so a URL
 	if ( $url ) {
 		return $url;
 	}
-	$page = get_page_by_path( 'pumpfinder' );
+	$page = get_page_by_path( 'pump-finder' );
 	return $page ? get_permalink( $page ) : home_url( '/' );
 }
+
+/**
+ * The page's old address, /pumpfinder/, goes to the pump finder (keeping ?pump=).
+ */
+add_action( 'template_redirect', function () {
+	if ( ! is_404() || trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' ) !== 'pumpfinder' ) {
+		return;
+	}
+	$term = hp_pump_finder_term();
+	$url  = hp_pump_finder_url();
+	wp_safe_redirect( $term !== '' ? add_query_arg( HP_PUMP_QUERY_VAR, rawurlencode( $term ), $url ) . '#pump-finder' : $url, 301 );
+	exit;
+} );
 
 /**
  * The search term from the URL, if any.

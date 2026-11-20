@@ -39,7 +39,7 @@ function initPumpSearch(form) {
 	const choose = name => {
 		input.value = name;
 		close();
-		form.submit();
+		form.requestSubmit(); // Runs the submit handler, so the in-page search below applies
 	};
 
 	const render = pumps => {
@@ -141,6 +141,49 @@ function initPumpSearch(form) {
 
 	input.addEventListener('blur', close);
 	form.addEventListener('submit', close);
+
+	// On the pump finder page itself, search in place: fetch the results page
+	// and swap in its answer, so the page doesn't reload and jump. The address
+	// updates so the result can be shared, and back/forward still work.
+	const results = form.closest('.pump-finder')?.querySelector('.pump-finder__results');
+	if (!results) return;
+
+	const show = async (term, push) => {
+		const url = new URL(form.action);
+		url.hash = '';
+		url.searchParams.set(input.name, term);
+		form.setAttribute('aria-busy', 'true');
+		try {
+			const response = await fetch(url);
+			if (!response.ok) throw new Error(response.status);
+			const page = new DOMParser().parseFromString(await response.text(), 'text/html');
+			const answer = page.querySelector('.pump-finder__results');
+			if (!answer) throw new Error('No results');
+			results.replaceChildren(...answer.childNodes);
+			if (push) history.pushState({ pump: term }, '', url);
+		} catch {
+			window.location.href = url; // Fall back to loading the page
+		} finally {
+			form.removeAttribute('aria-busy');
+		}
+	};
+
+	form.addEventListener('submit', e => {
+		const term = input.value.trim();
+		if (!term) return;
+		e.preventDefault();
+		show(term, true);
+	});
+
+	window.addEventListener('popstate', () => {
+		const term = new URL(window.location.href).searchParams.get(input.name) || '';
+		input.value = term;
+		if (term) {
+			show(term, false);
+		} else {
+			results.replaceChildren();
+		}
+	});
 }
 
 document.querySelectorAll('.pump-search').forEach(initPumpSearch);
