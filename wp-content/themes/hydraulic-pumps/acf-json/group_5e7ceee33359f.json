@@ -92,7 +92,7 @@
                 },
                 {
                     "key": "field_5e7cf772feba9",
-                    "label": "Twitter\/X",
+                    "label": "Twitter/X",
                     "name": "x_url",
                     "aria-label": "",
                     "type": "url",
@@ -209,6 +209,47 @@
             "new_lines": "br"
         },
         {
+            "key": "field_hp_tab_pump_finder",
+            "label": "Pump finder",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hp_pump_finder_page",
+            "label": "Pump finder page",
+            "name": "pump_finder_page",
+            "aria-label": "",
+            "type": "page_link",
+            "instructions": "Where pump searches go (the page with the Pump Finder block). Leave empty to use /pumpfinder/.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "allow_archives": 0,
+            "multiple": 0,
+            "allow_null": 1
+        },
+        {
             "key": "field_607b050b81cae",
             "label": "Global Alert",
             "name": "",
@@ -296,5 +337,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778851299
+    "modified": 1795700200
 }

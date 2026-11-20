@@ -49,6 +49,11 @@ body::after {
   pointer-events: none;
 }
 
+/* Not in ACF's WYSIWYG fields: TinyMCE loads the editor styles in its own iframe */
+body.mce-content-body::after {
+  display: none;
+}
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;

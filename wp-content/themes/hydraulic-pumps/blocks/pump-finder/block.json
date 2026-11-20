@@ -1,0 +1,17 @@
+{
+    "name": "acf/pump-finder",
+    "title": "Pump Finder",
+    "description": "Pump search, with the result: what's shown when we have the pump, or a no",
+    "category": "custom-blocks",
+    "icon": "search",
+    "keywords": ["pump", "finder", "search", "pumpfinder"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "pump-finder.php"
+    },
+    "align": "full",
+    "supports": {
+        "multiple": false
+    }
+}

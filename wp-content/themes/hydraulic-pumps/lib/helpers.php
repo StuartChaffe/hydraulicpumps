@@ -91,3 +91,24 @@ function origin_block_preview( $block ) {
 	);
 	return true;
 }
+
+/**
+ * A block field's value, or the field's default if the block hasn't saved it yet.
+ *
+ * ACF only stores a block's field values once the block is saved in the editor,
+ * so a block added by code (or not yet edited) would get nothing from get_field()
+ * and lose the default copy. A field the editor has cleared stays empty.
+ *
+ * @param array  $block The block settings ACF passes to the template.
+ * @param string $name  The field name.
+ * @param string $key   The field key.
+ * @return mixed
+ */
+function origin_block_field( $block, $name, $key ) {
+	$data = $block['data'] ?? array();
+	if ( array_key_exists( $name, $data ) || array_key_exists( $key, $data ) ) {
+		return get_field( $name );
+	}
+	$field = acf_get_field( $key );
+	return $field['default_value'] ?? '';
+}

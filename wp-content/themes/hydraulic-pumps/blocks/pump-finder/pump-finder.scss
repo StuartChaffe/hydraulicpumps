@@ -1,0 +1,308 @@
+// Pump search form (partials/pump-search.php), used by the pump finder CTA
+// and the Pump Finder block: a white bar with the input and a Search button
+.pump-search {
+	position: relative; // For the suggestions
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-xs);
+	background-color: var(--color-white);
+	border-radius: var(--radius-s);
+
+	&:focus-within {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+
+	// Two classes, to beat the global input[type="search"] border
+	& &__input {
+		flex: 1;
+		min-width: 0;
+		height: auto;
+		padding: 0 0 0 0.875rem;
+		background-color: transparent;
+		border: 0;
+		font-size: var(--text-size-s);
+
+		&:focus {
+			border: 0;
+			outline: 0; // The bar's own outline shows instead (:focus-within)
+		}
+
+		&::placeholder {
+			color: var(--color-text-base);
+			opacity: 1;
+		}
+	}
+
+	&__button {
+		flex: none;
+		font-size: var(--text-size-s);
+	}
+}
+
+// Suggestions as you type (src/js/components/pump-search.js): a white list
+// hanging under the bar, the highlighted one grey
+.pump-search__suggestions {
+	position: absolute;
+	top: calc(100% + 4px);
+	left: 0;
+	right: 0;
+	z-index: var(--z-content);
+	overflow-y: auto;
+	max-height: 18rem;
+	margin: 0;
+	padding: 6px;
+	background-color: var(--color-white);
+	border-radius: var(--radius-s);
+	box-shadow: 0 8px 24px rgb(1 52 115 / 0.18);
+	list-style: none;
+	text-align: left;
+}
+
+.pump-search__suggestion {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--spacing-s);
+	margin: 0;
+	padding: 0.6rem 0.875rem;
+	border-radius: var(--radius-s);
+	color: var(--color-primary);
+	cursor: pointer;
+
+	&:hover,
+	&[aria-selected="true"] {
+		background-color: var(--color-tertiary);
+	}
+}
+
+.pump-search__suggestion-name {
+	font-size: var(--text-size-s);
+	font-weight: var(--font-weight-bold);
+}
+
+.pump-search__suggestion-brand {
+	color: var(--color-grey-dark);
+	font-size: var(--text-size-xs);
+}
+
+// The Pump Finder page's bigger bar: a grey frame round a white input box
+// and a tall button
+.pump-search--large {
+	gap: 6px;
+	max-width: 730px;
+	margin-inline: auto;
+	padding: var(--spacing-xs);
+	background-color: var(--color-tertiary);
+	scroll-margin-top: var(--spacing); // Room above it when a search lands on it
+	border-radius: 6px;
+
+	.pump-search__input {
+		align-self: stretch;
+		min-height: 64px;
+		padding: 0 1.375rem;
+		background-color: var(--color-white);
+		border-radius: var(--radius-s);
+	}
+
+	.pump-search__button {
+		align-self: stretch;
+		padding-inline: 17px;
+	}
+}
+
+.pump-finder {
+	// Editor only: labels for the two answers
+	&__label {
+		margin: var(--spacing-l) 0 var(--spacing-xs);
+		color: var(--color-grey-dark);
+		font-size: var(--text-size-xs);
+		font-weight: var(--font-weight-bold);
+		letter-spacing: 0.05em;
+		text-align: center;
+		text-transform: uppercase;
+
+		+ .pump-result {
+			margin-top: 0;
+		}
+	}
+}
+
+// The answer under the search: a white panel in the gradient frame (like the
+// CTA's). The top has the tick or cross and heading, then the pump; a yes also
+// has the grey next steps underneath.
+.pump-result {
+	overflow: hidden; // Clips the grey next steps to the corners
+	margin-top: var(--spacing-l);
+	border: var(--spacing-xs) solid transparent;
+	border-radius: var(--radius); // 10px inside the frame
+	background:
+		linear-gradient(var(--color-white), var(--color-white)) padding-box,
+		linear-gradient(to top right, var(--color-tertiary), #c4cedb) border-box;
+	color: var(--color-primary);
+
+	&__top {
+		display: grid;
+		gap: var(--spacing);
+		align-items: center;
+		padding: var(--spacing);
+
+		@include mq(medium) {
+			grid-template-columns: 1.1fr 1fr;
+			gap: var(--spacing-l);
+			padding: var(--spacing-l) var(--spacing-xl);
+		}
+	}
+
+	&__answer {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing);
+	}
+
+	&__icon {
+		flex: none;
+		width: 54px;
+		height: auto;
+		margin-top: 0.4rem; // Level with the first line of the heading
+	}
+
+	&__heading {
+		max-width: 403px;
+		margin: 0;
+		color: var(--color-primary);
+		font-size: var(--text-size-3xl);
+		line-height: 1;
+	}
+
+	// Two classes, to beat the global p:last-of-type { margin-bottom: 0 }
+	& &__name {
+		margin-bottom: 1.5rem;
+		font-size: var(--text-size-l);
+		line-height: var(--leading-tight);
+
+		strong {
+			font-weight: var(--font-weight-heavy);
+		}
+	}
+
+	&__turnaround {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+
+		img {
+			flex: none;
+			width: 46px;
+			height: auto;
+		}
+
+		p {
+			margin: 0;
+			font-size: var(--text-size-m);
+			line-height: 1.36;
+		}
+	}
+
+	&__help p {
+		color: var(--color-text-base);
+		font-size: var(--text-size-m);
+	}
+
+	> :last-child,
+	&__help > :last-child {
+		margin-bottom: 0;
+	}
+
+	// Next steps: grey, centred, numbered steps with white chevrons between
+	&__next {
+		padding: var(--spacing);
+		background-color: var(--color-tertiary);
+		text-align: center;
+
+		@include mq(medium) {
+			padding: var(--spacing) var(--spacing-l);
+		}
+	}
+
+	&__next-heading {
+		margin-bottom: var(--spacing);
+		color: var(--color-primary);
+		font-size: var(--text-size-l);
+
+		@include mq(medium) {
+			margin-bottom: var(--spacing-l);
+		}
+	}
+
+	&__steps {
+		counter-reset: step;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing) var(--spacing-s);
+		margin: 0 0 var(--spacing-l);
+		padding: 0;
+		list-style: none;
+
+		@include mq(medium) {
+			grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+			gap: var(--spacing-l);
+		}
+
+		li {
+			counter-increment: step;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 4px;
+			margin: 0;
+			color: var(--color-text-base);
+			font-size: var(--text-size-m);
+			font-weight: var(--font-weight-bold);
+			line-height: 1.36;
+			text-wrap: balance;
+
+			// Narrow, so the labels wrap onto two lines like the design
+			span {
+				max-width: 7.5em;
+			}
+
+			// The number in a red circle
+			&::before {
+				content: counter(step);
+				display: grid;
+				place-items: center;
+				width: 41px;
+				height: 41px;
+				background-color: var(--color-secondary);
+				border-radius: 50%;
+				color: var(--color-white);
+				font-size: 1.75rem;
+				font-weight: var(--font-weight-heavy);
+				letter-spacing: -0.84px;
+				line-height: 1;
+			}
+
+			// Chevron to the next step, in the gap
+			@include mq(medium) {
+				&:not(:last-child)::after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: calc(100% + var(--spacing-l) / 2);
+					width: 49px;
+					height: 108px;
+					background: url('../../src/images/chevron.svg') center / contain no-repeat;
+					transform: translate(-50%, -50%);
+					pointer-events: none;
+				}
+			}
+		}
+	}
+
+	.editor-styles-wrapper & {
+		margin-top: 0;
+	}
+}

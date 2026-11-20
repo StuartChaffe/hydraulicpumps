@@ -1,5 +1,5 @@
-// Call to action: a centred panel at --content-width with a pale navy frame
-// (like the tabs frame). Grey with the stripes (cta-mask.svg, already at 10%
+// Call to action: a centred panel at --content-width with a gradient frame.
+// Grey with the stripes (cta-mask.svg, already at 10%
 // opacity) or solid navy with reversed text.
 .cta {
 	&__panel {
@@ -7,9 +7,13 @@
 		isolation: isolate; // Keeps the stripes' negative z-index inside the panel
 		overflow: hidden;
 		padding: var(--spacing-l) var(--spacing);
-		background-color: var(--color-tertiary);
-		border: var(--spacing-xs) solid rgb(1 52 115 / 0.2);
-		background-clip: padding-box; // So the frame shows over the navy too
+		// The frame is a gradient (panel grey bottom left to pale navy top
+		// right), drawn behind a transparent border; the fill sits inside it
+		--cta-background: var(--color-tertiary);
+		border: var(--spacing-xs) solid transparent;
+		background:
+			linear-gradient(var(--cta-background), var(--cta-background)) padding-box,
+			linear-gradient(to top right, var(--color-tertiary), #c4cedb) border-box;
 		border-radius: var(--radius);
 		text-align: center;
 
@@ -41,11 +45,130 @@
 	}
 
 	&--navy &__panel {
-		background-color: var(--color-primary);
+		--cta-background: var(--color-primary);
 		color: var(--color-text-reversed);
 
 		.wp-block-heading {
 			color: var(--color-text-reversed);
 		}
+	}
+}
+
+// Pump finder: title, intro and a search bar, with a translucent white strip
+// along the bottom (contact text and a WhatsApp button with its QR code).
+// The panel loses its padding so the strip can run edge to edge.
+.cta--pump-finder {
+	// Not clipped, so the search suggestions can hang over the panel's edge.
+	// The stripes and the strip round their own corners instead.
+	--cta-inner-radius: calc(var(--radius) - var(--spacing-xs));
+
+	.cta__panel {
+		overflow: visible;
+		padding: 0;
+
+		&::before {
+			border-radius: var(--cta-inner-radius);
+		}
+	}
+
+	.cta__main {
+		position: relative;
+		z-index: 1; // The suggestions sit over the strip
+	}
+
+	.cta__main {
+		padding: var(--spacing) var(--spacing) var(--spacing-l);
+	}
+
+	.cta__title {
+		margin-bottom: var(--spacing-xs);
+		color: var(--color-primary);
+		font-size: var(--text-size-3xl);
+	}
+
+	.cta__intro {
+		margin-bottom: var(--spacing);
+		font-size: var(--text-size-m);
+	}
+
+	.pump-search {
+		max-width: 730px;
+		margin-inline: auto;
+	}
+
+	.cta__strip {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--spacing);
+		padding: var(--spacing);
+		background-color: rgb(255 255 255 / 0.7);
+		border-radius: 0 0 var(--cta-inner-radius) var(--cta-inner-radius);
+		text-align: left;
+
+		@include mq(medium) {
+			flex-direction: row;
+			justify-content: space-between;
+			max-width: none;
+			padding-inline: max(var(--spacing), (100% - 920px) / 2);
+		}
+	}
+
+	.cta__strip-text p {
+		margin: 0;
+		font-size: var(--text-size-m);
+		line-height: 1.36; // 30px at 22px
+
+		strong {
+			color: var(--color-text-base);
+		}
+	}
+
+	// Green WhatsApp button: icon, label and number, and the QR code in white
+	.cta__whatsapp {
+		display: flex;
+		align-items: center;
+		gap: 0.875rem;
+		flex: none;
+		padding: 6px 6px 6px 14px;
+		background-color: #25d366;
+		border-radius: var(--radius-s);
+		color: var(--color-white);
+		text-decoration: none;
+		transition: background-color var(--transition-base);
+
+		&:hover {
+			background-color: #1da851;
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--color-primary);
+			outline-offset: 2px;
+		}
+	}
+
+	.cta__whatsapp-icon {
+		display: block;
+		flex: none;
+		width: 52px;
+		height: auto;
+	}
+
+	.cta__whatsapp-text {
+		display: flex;
+		flex-direction: column;
+		font-weight: var(--font-weight-heavy);
+		font-size: 1.5rem;
+		line-height: 1.2;
+		letter-spacing: -0.72px;
+	}
+
+	.cta__qr {
+		display: block;
+		flex: none;
+		width: 71px;
+		height: 73px;
+		object-fit: contain;
+		background-color: var(--color-white);
 	}
 }

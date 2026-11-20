@@ -1,0 +1,49 @@
+{
+    "key": "group_hp_pump_details",
+    "title": "Pump details",
+    "fields": [
+        {
+            "key": "field_hp_pump_turnaround",
+            "label": "Estimated turnaround",
+            "name": "turnaround",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "For example: 5–7 working days",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "maxlength": "",
+            "placeholder": "5–7 working days",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "pump"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1795700100
+}

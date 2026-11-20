@@ -8,5 +8,6 @@ import './components/tabs';
 import './components/faqs';
 import './components/content-tabs';
 import './components/posts';
+import './components/pump-search';
 import './components/image-gallery';
 import './components/menu';
