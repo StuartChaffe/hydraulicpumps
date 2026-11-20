@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 $logos = get_field('logos');
 
 if ( $logos ) : ?>

@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 $title = get_field('title');
 $slides = get_field('slides');
 

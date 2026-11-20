@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 // Featured Posts: a row of article cards. Shows the latest posts, the latest
 // from a category, or hand-picked posts. Any slots the picked posts don't
 // fill are topped up with the latest posts (like socialaf). The intro above

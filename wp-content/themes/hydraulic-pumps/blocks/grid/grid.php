@@ -1,20 +1,22 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 $items      = get_field('items');
 $link_style = in_array( get_field('link_style'), array( 'button', 'card' ), true ) ? get_field('link_style') : 'link';
+$is_tile    = get_field('card_style') === 'tile'; // Image tile: image on top, no background
 
 if ( $items ) :
 	$items = array_slice( $items, 0, 4 );
 	$count = count( $items );
 	?>
-<section class="block grid grid--cols-<?php echo esc_attr( $count ); ?> grid--link-<?php echo esc_attr( $link_style ); ?>" style="--grid-cols: <?php echo esc_attr( $count ); ?>">
-	<?php // Up to 3 items sit within --content-width, 4 use the full container ?>
-	<div class="container<?php echo $count <= 3 ? ' container--content' : ''; ?>">
+<section class="block grid grid--cols-<?php echo esc_attr( $count ); ?> grid--link-<?php echo esc_attr( $link_style ); ?><?php echo $is_tile ? ' grid--tile' : ''; ?>" style="--grid-cols: <?php echo esc_attr( $count ); ?>">
+	<?php // Up to 3 cards sit within --content-width; 4 cards, and image tiles, use the full container ?>
+	<div class="container<?php echo $count <= 3 && ! $is_tile ? ' container--content' : ''; ?>">
 		<ul class="grid__list" role="list">
 			<?php foreach ( $items as $item ) :
-				$background = $item['background_image'] ?? null;
+				$background = $is_tile ? null : ( $item['background_image'] ?? null ); // Tiles have no background
 				$image      = $item['image'] ?? null;
 				$link       = $item['link'] ?? null;
-				$has_media  = $background || $image;
+				$has_media  = ! $is_tile && ( $background || $image ); // The card's mask and image layout
 				$has_link   = $link && ! empty( $link['url'] );
 				$target     = $has_link && ! empty( $link['target'] ) ? ' target="' . esc_attr( $link['target'] ) . '" rel="noopener"' : '';
 				$card_link  = $has_link && $link_style === 'card';
@@ -22,6 +24,12 @@ if ( $items ) :
 				<li class="grid__item<?php echo $has_media ? ' grid__item--has-media' : ''; ?><?php echo $card_link ? ' grid__item--linked' : ''; ?>">
 					<?php if ( $background ) : ?>
 						<?php echo wp_get_attachment_image( $background, 'large', false, array( 'class' => 'grid__background', 'alt' => '', 'sizes' => '(min-width: 50em) 33vw, 100vw' ) ); ?>
+					<?php endif; ?>
+
+					<?php if ( $is_tile && $image ) : // Tiles: the image goes on top ?>
+						<?php echo wp_get_attachment_image( $image, 'large', false, array( 'class' => 'grid__tile-image', 'alt' => '', 'sizes' => '(min-width: 50em) 50vw, 100vw' ) ); ?>
+					<?php elseif ( $is_tile ) : // No image: a navy panel in its place ?>
+						<div class="grid__tile-image grid__tile-image--empty" aria-hidden="true"></div>
 					<?php endif; ?>
 
 					<div class="grid__content">
@@ -46,7 +54,7 @@ if ( $items ) :
 						<?php endif; ?>
 					</div>
 
-					<?php if ( $image ) : ?>
+					<?php if ( $image && ! $is_tile ) : ?>
 						<?php echo wp_get_attachment_image( $image, 'medium_large', false, array( 'class' => 'grid__image', 'sizes' => '(min-width: 50em) 35rem, 100vw' ) ); ?>
 					<?php endif; ?>
 				</li>

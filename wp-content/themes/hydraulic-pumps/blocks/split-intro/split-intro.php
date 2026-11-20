@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 // Split Intro: the first heading sits on the left, everything after it on the
 // right (see split-intro.scss). Plain InnerBlocks, so the heading keeps the
 // usual formatting, e.g. a red word.

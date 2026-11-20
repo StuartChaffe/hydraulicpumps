@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 $allowed_blocks = array( 'core/heading', 'core/paragraph', 'core/buttons', 'core/list' );
 $template       = array(
 	array( 'core/heading', array( 'level' => 2, 'textAlign' => 'center', 'fontSize' => 'x-large', 'placeholder' => 'Heading' ) ),

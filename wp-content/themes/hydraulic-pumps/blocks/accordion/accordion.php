@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 $allowed_blocks = array( 'core/heading', 'core/paragraph' );
 $accordion      = get_field('accordion_items');
 

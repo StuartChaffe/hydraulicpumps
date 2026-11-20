@@ -10,5 +10,8 @@
         "mode": "preview",
         "renderTemplate": "faqs.php"
     },
-    "align": "full"
+    "align": "full",
+    "example": {
+        "attributes": { "mode": "preview", "data": { "preview_image": "preview.jpg" } }
+    }
 }

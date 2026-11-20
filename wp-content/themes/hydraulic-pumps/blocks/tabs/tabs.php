@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 // Each Tab child block outputs its own accordion toggle and panel. On the front
 // end the tab bar is built here from the children's labels; in the editor the
 // children's toggles are laid out as the tabs instead (see tabs.scss).

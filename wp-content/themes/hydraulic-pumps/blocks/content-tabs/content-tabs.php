@@ -1,4 +1,5 @@
 <?php
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 // Content Tabs: pill tabs that switch the panel below. Each Content Tab child
 // block is a panel (a table, text etc.). On the front end the tab bar is built
 // here from the children's labels; in the editor each child shows its own

@@ -1,7 +1,33 @@
 {
     "key": "group_grid_block",
-    "title": "Block/Grid",
+    "title": "Block\/Grid",
     "fields": [
+        {
+            "key": "field_grid_card_style",
+            "label": "Card style",
+            "name": "card_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Image tile: the image on top, no background, across the full width.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "card": "Card",
+                "tile": "Image tile"
+            },
+            "default_value": "card",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
         {
             "key": "field_grid_link_style",
             "label": "Link style",
@@ -12,7 +38,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -170,7 +196,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf/grid"
+                "value": "acf\/grid"
             }
         ]
     ],
@@ -186,5 +212,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1795600001
+    "modified": 1795192061
 }

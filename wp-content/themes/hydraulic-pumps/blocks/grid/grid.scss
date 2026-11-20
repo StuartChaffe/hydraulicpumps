@@ -183,3 +183,51 @@
 		padding-bottom: 0;
 	}
 }
+
+// Image tile style: the image on top (7:4), then the title, text and link,
+// with no background or padding. Not square, and more space between rows.
+.grid--tile {
+	.grid__list {
+		row-gap: var(--spacing-xl);
+	}
+
+	.grid__item {
+		gap: var(--spacing);
+		min-height: 0;
+		overflow: visible;
+		background-color: transparent;
+		border-radius: 0;
+	}
+
+	.grid__tile-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 7 / 4;
+		object-fit: cover;
+		border-radius: var(--radius-s);
+	}
+
+	// No image: a navy panel the same size
+	.grid__tile-image--empty {
+		background-color: var(--color-primary);
+	}
+
+	.grid__content {
+		padding: 0;
+	}
+
+	.grid__title {
+		margin-bottom: var(--spacing-s);
+		font-size: var(--text-size-xl);
+	}
+
+	.grid__text p {
+		font-size: var(--text-size-m);
+	}
+
+	// Whole-tile link: round the focus ring to the image corners
+	.grid__card-link:focus-visible::before {
+		outline-offset: 4px;
+	}
+}

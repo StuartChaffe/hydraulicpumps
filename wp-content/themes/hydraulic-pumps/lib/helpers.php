@@ -65,3 +65,29 @@ if (!function_exists('dump_exit')) {
 function origin_tab_id( $label ) {
 	return sanitize_title( $label ) ?: 'tab';
 }
+
+/**
+ * Block inserter preview. When the editor renders a block's "example" (the
+ * preview shown when hovering over it in the inserter), show the block's
+ * preview.jpg screenshot instead of rendering it. Each block.json sets:
+ *
+ *   "example": { "attributes": { "mode": "preview", "data": { "preview_image": "preview.jpg" } } }
+ *
+ * Call at the top of a block template: if ( origin_block_preview( $block ) ) return;
+ *
+ * @param array $block The block settings ACF passes to the template.
+ * @return bool True if the preview image was output (so skip the block).
+ */
+function origin_block_preview( $block ) {
+	$file = $block['data']['preview_image'] ?? '';
+	if ( ! $file ) {
+		return false;
+	}
+
+	$slug = str_replace( 'acf/', '', $block['name'] ?? '' );
+	printf(
+		'<img src="%s" alt="" style="display:block;width:100%%;height:auto">',
+		esc_url( get_theme_file_uri( 'blocks/' . $slug . '/' . $file ) )
+	);
+	return true;
+}
