@@ -40,8 +40,10 @@ function fixCssAssetPaths() {
                     .replace(/url\(\.\/fonts\//g, 'url(../fonts/')
                     .replace(/url\(fonts\//g, 'url(../fonts/')
                     // any path that escapes assets/ and contains /images/ → ../images/
+                    // (folder names can't include ) or spaces, so a match can't run on
+                    // past the end of one url() into the next rule: minified CSS drops the quotes)
                     .replace(
-                        /url\((['"]?)(?:\.\.\/)+(?:[^/'"]+\/)*images\/([^)'"]+)\1\)/g,
+                        /url\((['"]?)(?:\.\.\/)+(?:[^/'"()\s]+\/)*images\/([^)'"]+)\1\)/g,
                         'url($1../images/$2$1)'
                     )
             }
