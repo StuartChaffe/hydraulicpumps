@@ -3,6 +3,26 @@
     "title": "Pump details",
     "fields": [
         {
+            "key": "field_hp_pump_type",
+            "label": "Pump type",
+            "name": "pump_type",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Variable Axial Piston",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_hp_pump_turnaround",
             "label": "Estimated turnaround",
             "name": "turnaround",
@@ -12,7 +32,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -45,5 +65,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1795700100
+    "modified": 1795800200
 }

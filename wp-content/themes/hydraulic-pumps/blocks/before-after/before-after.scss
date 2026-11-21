@@ -1,0 +1,317 @@
+// Before & After (before-after.php): the Before/After buttons over each half,
+// the photos with a white divider and round handle, the brand logo and (i)
+// bottom left, the pump's details in grey boxes, and dots for more pumps.
+.before-after {
+	&__carousel {
+		position: relative;
+	}
+
+	// Buttons centred over each half of the photo
+	&__buttons {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		justify-items: center;
+		margin-bottom: var(--spacing);
+	}
+
+	&__show {
+		font-size: var(--text-size-s);
+
+		&::after {
+			display: none; // No arrow
+		}
+	}
+
+	// The photos: after underneath, before on top, clipped to --position from the left
+	&__compare {
+		--position: 50%;
+		position: relative;
+		overflow: hidden;
+		aspect-ratio: 1110 / 621;
+		background-color: var(--color-tertiary);
+		border-radius: var(--radius-s);
+		user-select: none;
+	}
+
+	&__image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		pointer-events: none;
+	}
+
+	&__image--before {
+		clip-path: inset(0 calc(100% - var(--position)) 0 0);
+	}
+
+	// White line and round handle with arrows, at --position
+	&__handle {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: var(--position);
+		width: 5px;
+		background-color: var(--color-white);
+		transform: translateX(-50%);
+		pointer-events: none;
+	}
+
+	// The knob follows the line, but stays inside the photo at either end
+	&__knob {
+		position: absolute;
+		top: 50%;
+		left: clamp(40px, var(--position), calc(100% - 40px));
+		pointer-events: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		width: 80px;
+		height: 80px;
+		background-color: var(--color-white);
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+
+		// Left and right arrows
+		&::before,
+		&::after {
+			content: '';
+			width: 15px;
+			height: 12px;
+			background-color: var(--color-text-base);
+			mask: url('../../src/images/arrow.svg') center / contain no-repeat;
+		}
+
+		&::before {
+			transform: scaleX(-1);
+		}
+	}
+
+	// Before/After buttons slide the handle across
+	&__compare.is-animating {
+		.before-after__image--before {
+			transition: clip-path 0.6s ease-in-out;
+		}
+
+		.before-after__handle,
+		.before-after__knob {
+			transition: left 0.6s ease-in-out;
+		}
+	}
+
+	// The range input covers the photo, invisible: drag anywhere, or use the arrow keys
+	&__range {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		background: transparent;
+		opacity: 0;
+		cursor: ew-resize;
+		touch-action: pan-y; // Still scroll the page up and down on touch screens
+		appearance: none;
+
+		&::-webkit-slider-thumb {
+			width: 80px;
+			height: 100%;
+			appearance: none;
+		}
+
+		&::-moz-range-thumb {
+			width: 80px;
+			height: 100%;
+			border: 0;
+		}
+	}
+
+	// Keyboard focus: ring the handle
+	&__compare:has(.before-after__range:focus-visible) .before-after__knob {
+		outline: 3px solid var(--color-primary);
+		outline-offset: 3px;
+	}
+
+	// Brand logo on a white box, and the (i), bottom left over the photo
+	&__brand {
+		position: absolute;
+		left: var(--spacing-xs);
+		bottom: var(--spacing-xs);
+		z-index: 2; // Above the range input, so the (i) can be pressed
+		display: flex;
+		align-items: center;
+		gap: 15px;
+	}
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 152px;
+		height: 70px;
+		padding: 11px 15px;
+		background-color: var(--color-white);
+		border-radius: var(--radius-s);
+
+		img {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			width: auto;
+			height: auto;
+		}
+	}
+
+	&__info {
+		display: block;
+		padding: 0;
+		background: none;
+		border: 0;
+		border-radius: 50%;
+		cursor: pointer;
+
+		img {
+			display: block;
+			width: 42px;
+			height: 42px;
+		}
+
+		&:focus-visible {
+			outline: 3px solid var(--color-white);
+			outline-offset: 2px;
+		}
+	}
+
+	// The photo darkens a little round the open panel
+	&__compare:has(.before-after__story:not([hidden]))::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background-color: rgb(0 0 0 / 0.2);
+	}
+
+	// About this repair: a white panel over the photo, opened by the (i)
+	&__story {
+		position: absolute;
+		inset: var(--spacing-xs);
+		z-index: 3;
+		overflow-y: auto;
+		padding: var(--spacing) var(--spacing);
+		background-color: var(--color-white);
+		border-radius: var(--radius-s);
+
+		@include mq(medium) {
+			padding: var(--spacing-l) 4rem;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		p {
+			max-width: 40rem; // 640px
+			margin-bottom: var(--spacing);
+			font-size: var(--text-size-m);
+		}
+	}
+
+	&__story-heading {
+		margin-bottom: var(--spacing-s);
+		color: var(--color-primary);
+		font-size: var(--text-size-l);
+		letter-spacing: -0.84px;
+	}
+
+	&__close {
+		position: absolute;
+		top: var(--spacing);
+		right: var(--spacing);
+		padding: 0;
+		background: none;
+		border: 0;
+		border-radius: 50%;
+		cursor: pointer;
+
+		img {
+			display: block;
+			width: 42px;
+			height: 42px;
+		}
+
+		&:hover img {
+			opacity: 0.7;
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--color-primary);
+			outline-offset: 2px;
+		}
+	}
+
+	// The pump's details: grey boxes in a row (two across on small screens)
+	&__specs {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-xs);
+		margin: 7px 0 0;
+
+		@include mq(medium) {
+			grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+		}
+
+		> div {
+			min-width: 0;
+			padding: 14px 20px;
+			background-color: var(--color-tertiary);
+			border-radius: var(--radius-s);
+		}
+
+		dt {
+			margin-bottom: 2px;
+			color: var(--color-secondary);
+			font-size: 0.875rem; // 14px
+			font-weight: var(--font-weight-bold);
+			letter-spacing: 0.08em;
+		}
+
+		dd {
+			margin: 0;
+			color: var(--color-primary);
+			font-size: var(--text-size-s);
+			font-weight: var(--font-weight-bold);
+			line-height: var(--leading-tight);
+		}
+	}
+
+	// Dots: navy, the current one filled
+	&__dots {
+		position: static;
+		display: flex;
+		justify-content: center;
+		gap: 12px;
+		margin-top: var(--spacing-l);
+	}
+
+	&__dot {
+		display: block;
+		width: 20px;
+		height: 20px;
+		border: 1px solid var(--color-primary);
+		border-radius: 50%;
+		cursor: pointer;
+		transition: background-color var(--transition-base);
+
+		&.is-active,
+		&:hover {
+			background-color: var(--color-primary);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--color-primary);
+			outline-offset: 3px;
+		}
+	}
+}

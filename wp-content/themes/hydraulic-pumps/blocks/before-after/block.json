@@ -1,0 +1,17 @@
+{
+    "name": "acf/before-after",
+    "title": "Before & After",
+    "description": "Before and after photos of repaired pumps, with a slider to compare, and the pump's details",
+    "category": "custom-blocks",
+    "icon": "image-flip-horizontal",
+    "keywords": ["before", "after", "compare", "slider", "repair", "carousel"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "before-after.php"
+    },
+    "align": "full",
+    "example": {
+        "attributes": { "mode": "preview", "data": { "preview_image": "preview.jpg" } }
+    }
+}

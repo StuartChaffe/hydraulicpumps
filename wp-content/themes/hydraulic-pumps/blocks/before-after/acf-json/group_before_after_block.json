@@ -1,0 +1,231 @@
+{
+    "key": "group_before_after_block",
+    "title": "Block/Before & After",
+    "fields": [
+        {
+            "key": "field_before_after_slides",
+            "label": "Slides",
+            "name": "slides",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "One per pump. More than one shows as a carousel with dots.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 1,
+            "max": 0,
+            "collapsed": "field_before_after_pump",
+            "button_label": "Add a pump",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_before_after_before",
+                    "label": "Before",
+                    "name": "before",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "jpg, jpeg, png, webp",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_before_after_slides"
+                },
+                {
+                    "key": "field_before_after_after",
+                    "label": "After",
+                    "name": "after",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "jpg, jpeg, png, webp",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_before_after_slides"
+                },
+                {
+                    "key": "field_before_after_pump",
+                    "label": "Pump",
+                    "name": "pump",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Manufacturer (and its logo), model, pump type and turnaround come from the pump.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "pump"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_before_after_slides"
+                },
+                {
+                    "key": "field_before_after_warranty",
+                    "label": "Warranty",
+                    "name": "warranty",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "12 months",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_before_after_slides"
+                },
+                {
+                    "key": "field_before_after_problem",
+                    "label": "The problem",
+                    "name": "problem",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "The (i) beside the logo opens these three. Leave all three empty for no (i).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_before_after_slides"
+                },
+                {
+                    "key": "field_before_after_what_we_did",
+                    "label": "What we did",
+                    "name": "what_we_did",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_before_after_slides"
+                },
+                {
+                    "key": "field_before_after_result",
+                    "label": "The result",
+                    "name": "result",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_before_after_slides"
+                }
+            ]
+        },
+        {
+            "key": "field_before_after_enquire",
+            "label": "Enquire button",
+            "name": "enquire",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "In the (i) panel. Leave empty for “Enquire about a similar repair” to the Request a quote page. The pump's name is added to the link (?pump=...).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/before-after"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1795800300
+}
