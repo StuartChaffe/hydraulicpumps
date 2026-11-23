@@ -22,7 +22,7 @@ endif;
 
 $is_carousel = count( $slides ) > 1;
 $enquire     = get_field('enquire') ?: array(
-	'url'    => get_permalink( get_page_by_path( 'request-a-quote' ) ) ?: home_url( '/request-a-quote/' ),
+	'url'    => get_permalink( get_page_by_path( 'book-a-repair' ) ) ?: home_url( '/book-a-repair/' ),
 	'title'  => __( 'Enquire about a similar repair', 'origin' ),
 	'target' => '',
 );

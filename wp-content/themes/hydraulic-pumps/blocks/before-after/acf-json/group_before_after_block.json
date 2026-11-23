@@ -194,7 +194,7 @@
             "name": "enquire",
             "aria-label": "",
             "type": "link",
-            "instructions": "In the (i) panel. Leave empty for “Enquire about a similar repair” to the Request a quote page. The pump's name is added to the link (?pump=...).",
+            "instructions": "In the (i) panel. Leave empty for “Enquire about a similar repair” to the Book a repair page.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

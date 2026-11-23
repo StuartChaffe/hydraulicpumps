@@ -125,9 +125,9 @@ function hp_pump_finder_suggestions( $term, $limit = 8 ) {
 }
 
 /**
- * Book a repair (and Request a quote) forms: coming from a pump finder result
+ * Book a repair form: coming from a pump finder result
  * (?pump=A10VSO28DFR), fill in the pump's make (its brand) and model. The
- * forms' pump make and model fields allow dynamic population with the
+ * form's pump make and model fields allow dynamic population with the
  * parameter names pump_make and pump_model. An unknown pump still fills the
  * model with what was searched.
  */
