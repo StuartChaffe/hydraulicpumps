@@ -1,15 +1,17 @@
 <?php
-if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
-// Each Tab child block outputs its own accordion toggle and panel. On the front
-// end the tab bar is built here from the children's labels; in the editor the
-// children's toggles are laid out as the tabs instead (see tabs.scss).
-
 /**
- * Passed in by ACF when it renders the block.
+ * Tabs: each Tab child block outputs its own accordion toggle and panel. On the
+ * front end the tab bar is built here from the children's labels; in the editor
+ * the children's toggles are laid out as the tabs instead (see tabs.scss).
  *
+ * Passed in by ACF when it renders the block:
+ *
+ * @var array         $block      The block settings.
  * @var bool          $is_preview True in the editor.
  * @var WP_Block|null $wp_block   The block instance, for reading the Tab children.
  */
+if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
+
 $is_preview = ! empty( $is_preview );
 $wp_block   = $wp_block ?? null;
 

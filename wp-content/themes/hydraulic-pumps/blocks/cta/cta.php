@@ -1,4 +1,5 @@
 <?php
+/** @var array $block Block settings, passed in by ACF. */
 if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 $is_pump_finder = get_field('style') === 'pump_finder';
 $background     = ! $is_pump_finder && get_field('background') === 'navy' ? 'navy' : 'mask';

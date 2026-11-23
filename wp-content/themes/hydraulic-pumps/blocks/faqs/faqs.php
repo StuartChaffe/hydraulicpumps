@@ -1,4 +1,5 @@
 <?php
+/** @var array $block Block settings, passed in by ACF. */
 if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 // FAQs from the FAQ post type, in the accordion's style. Either every FAQ in
 // the chosen categories, with a tab per category (filtered by MixItUp, see

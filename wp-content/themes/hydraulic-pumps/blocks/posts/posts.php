@@ -1,4 +1,5 @@
 <?php
+/** @var array $block Block settings, passed in by ACF. */
 if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 // Posts: every post, with category filter buttons and "Load more" (MixItUp,
 // see posts.js). The intro above is InnerBlocks. Without JavaScript every
