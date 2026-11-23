@@ -98,6 +98,7 @@
 // read them out.
 .breadcrumb {
 	padding: 0.875rem var(--spacing); // 14px: 52px tall with the 24px line
+	padding-top: calc(0.875rem - 6px); // Less the header's 6px bottom margin
 	border-bottom: 1px solid var(--color-tertiary);
 	font-size: 0.875rem; // 14px
 	line-height: 1.7;

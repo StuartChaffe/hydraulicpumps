@@ -125,6 +125,31 @@ function hp_pump_finder_suggestions( $term, $limit = 8 ) {
 }
 
 /**
+ * Book a repair (and Request a quote) forms: coming from a pump finder result
+ * (?pump=A10VSO28DFR), fill in the pump's make (its brand) and model. The
+ * forms' pump make and model fields allow dynamic population with the
+ * parameter names pump_make and pump_model. An unknown pump still fills the
+ * model with what was searched.
+ */
+add_filter( 'gform_field_value_pump_model', function ( $value ) {
+	$term = hp_pump_finder_term();
+	if ( $term === '' ) {
+		return $value;
+	}
+	$pump = hp_pump_finder_search( $term );
+	return $pump ? $pump->post_title : $term;
+} );
+
+add_filter( 'gform_field_value_pump_make', function ( $value ) {
+	$pump = hp_pump_finder_term() !== '' ? hp_pump_finder_search( hp_pump_finder_term() ) : null;
+	if ( ! $pump ) {
+		return $value;
+	}
+	$brands = get_the_terms( $pump, 'pump_brand' );
+	return $brands && ! is_wp_error( $brands ) ? $brands[0]->name : $value;
+} );
+
+/**
  * GET /wp-json/hp/v1/pump-suggestions?search=a10
  */
 add_action( 'rest_api_init', function () {

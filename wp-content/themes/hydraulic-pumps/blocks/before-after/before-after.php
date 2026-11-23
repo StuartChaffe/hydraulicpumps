@@ -94,7 +94,7 @@ $enquire     = get_field('enquire') ?: array(
 										<?php echo wp_kses_post( wpautop( $text ) ); ?>
 									<?php endforeach; ?>
 									<?php if ( ! empty( $enquire['url'] ) ) : ?>
-										<a class="btn before-after__enquire" href="<?php echo esc_url( $name ? add_query_arg( 'pump', rawurlencode( $name ), $enquire['url'] ) : $enquire['url'] ); ?>"<?php echo ! empty( $enquire['target'] ) ? ' target="' . esc_attr( $enquire['target'] ) . '" rel="noopener"' : ''; ?>><?php echo esc_html( $enquire['title'] ?: __( 'Enquire about a similar repair', 'origin' ) ); ?></a>
+										<a class="btn before-after__enquire" href="<?php echo esc_url( $enquire['url'] ); ?>"<?php echo ! empty( $enquire['target'] ) ? ' target="' . esc_attr( $enquire['target'] ) . '" rel="noopener"' : ''; ?>><?php echo esc_html( $enquire['title'] ?: __( 'Enquire about a similar repair', 'origin' ) ); ?></a>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>

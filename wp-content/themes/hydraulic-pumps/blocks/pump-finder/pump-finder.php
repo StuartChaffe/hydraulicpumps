@@ -23,7 +23,7 @@ $yes = function ( $name, $brand, $turnaround ) use ( $field, $images ) {
 	$brand_name = $brand ? $brand->name : '';
 	$steps  = array_filter( array_map( 'trim', preg_split( '/\R/', (string) $field('steps') ) ) );
 	$button = get_field('button') ?: array(
-		'url'    => get_permalink( get_page_by_path( 'request-a-quote' ) ) ?: home_url( '/request-a-quote/' ),
+		'url'    => get_permalink( get_page_by_path( 'book-a-repair' ) ) ?: home_url( '/book-a-repair/' ),
 		'title'  => __( 'Book my repair', 'origin' ),
 		'target' => '',
 	);

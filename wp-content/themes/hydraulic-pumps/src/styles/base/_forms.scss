@@ -73,3 +73,16 @@ input[type="reset"].center {
  .required {
 	 color: #BF5D58;
  }
+
+// Gravity Forms. Its Orbital theme does the layout and inputs; these bring it
+// in line with the site. Submit buttons are <button class="btn"> (lib/vendors.php)
+// with .gform-theme-no-framework, so they take the site's button styles instead.
+.gform_wrapper.gform-theme--framework {
+	--gf-ctrl-label-font-size-primary: var(--text-size-base);
+	--gf-ctrl-label-font-size-secondary: var(--text-size-base);
+}
+
+// Space between intro copy and the form (p:last-of-type has no bottom margin)
+* + .gform_wrapper {
+	margin-top: var(--spacing-xl);
+}
