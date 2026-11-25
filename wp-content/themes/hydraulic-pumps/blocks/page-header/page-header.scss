@@ -66,6 +66,16 @@
 	}
 }
 
+// No background image: the content is centred vertically (.f-center-align),
+// so match the top padding underneath to keep it in the middle
+.page-header--large .f-center-align .page-header__content {
+	padding-bottom: var(--spacing-xl);
+
+	> :last-child {
+		margin-bottom: 0; // Or the heading's margin nudges it above centre
+	}
+}
+
 // Optional image: the right 50% on desktop, tight against the header's right edge
 .page-header__media {
 	min-width: 0;

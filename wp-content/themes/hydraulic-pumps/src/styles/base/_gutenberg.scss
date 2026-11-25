@@ -72,6 +72,36 @@
 	line-height: 0;
 }
 
+// Captioned image: rounded, with the caption in a dark tab over its bottom left corner
+// (image and caption share one grid cell, so the tab lines up with the image, not the figure's padding)
+.wp-block-image:has(> .wp-element-caption) {
+	display: grid;
+
+	img,
+	.wp-element-caption {
+		grid-area: 1 / 1;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		border-radius: var(--radius);
+	}
+
+	.wp-element-caption {
+		align-self: end;
+		justify-self: start;
+		max-width: calc(100% - var(--spacing));
+		margin: 0;
+		padding: 0.875rem 1.5rem;
+		background-color: rgb(0 0 0 / 0.85);
+		border-radius: 0 var(--radius) 0 var(--radius);
+		color: var(--color-text-reversed);
+		font-size: var(--text-size-xs);
+		line-height: 1.5;
+	}
+}
+
 // Full width button
 .wp-block-button.is-style-full,
 .wp-block-button.is-style-full .block-editor-rich-text,
