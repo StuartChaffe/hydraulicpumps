@@ -44,6 +44,11 @@
 		pointer-events: none;
 	}
 
+	// Full: the panel widens from --content-width to --container-width
+	&--full .container {
+		max-width: var(--container-width);
+	}
+
 	&--navy &__panel {
 		--cta-background: var(--color-primary);
 		color: var(--color-text-reversed);

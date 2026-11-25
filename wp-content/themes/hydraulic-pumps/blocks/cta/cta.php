@@ -3,6 +3,7 @@
 if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
 $is_pump_finder = get_field('style') === 'pump_finder';
 $background     = ! $is_pump_finder && get_field('background') === 'navy' ? 'navy' : 'mask';
+$full           = get_field('width') === 'full' ? ' cta--full' : ''; // Standard (the default) changes nothing
 
 if ( $is_pump_finder ) :
 	// Fields default to the Figma copy, so it only needs changing if it's different
@@ -20,7 +21,7 @@ if ( $is_pump_finder ) :
 	$wa_digits = preg_replace( '/\D/', '', (string) $wa_number );
 	$wa_url    = $wa_digits ? 'https://wa.me/' . preg_replace( '/^0/', '44', $wa_digits ) : '';
 	?>
-<section class="block cta cta--mask cta--pump-finder">
+<section class="block cta cta--mask cta--pump-finder<?php echo $full; ?>">
 	<div class="container container--content">
 		<div class="cta__panel">
 			<div class="cta__main">
@@ -73,7 +74,7 @@ $template       = array(
 	) ),
 );
 ?>
-<section class="block cta cta--<?php echo esc_attr( $background ); ?>">
+<section class="block cta cta--<?php echo esc_attr( $background ); ?><?php echo $full; ?>">
 	<div class="container container--content">
 		<div class="cta__panel">
 			<?php if ( is_admin() || ! empty( $content ) ) : ?><?php echo '<InnerBlocks allowedBlocks="' . esc_attr( wp_json_encode( $allowed_blocks ) ) . '" template="' . esc_attr( wp_json_encode( $template ) ) . '" />'; ?><?php endif; ?>

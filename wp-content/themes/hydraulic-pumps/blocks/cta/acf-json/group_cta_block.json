@@ -63,6 +63,30 @@
             "placeholder": ""
         },
         {
+            "key": "field_cta_width",
+            "label": "Container size",
+            "name": "width",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Standard sits at the content width. Full widens it to the container width.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standard": "Standard",
+                "full": "Full"
+            },
+            "default_value": "standard",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_cta_pf_title",
             "label": "Title",
             "name": "pf_title",
@@ -168,7 +192,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<strong>Can’t find your unit?</strong>\nWe can recondition most manufacturers units.\nCall us on 01709 360370 or WhatsApp your photo",
+            "default_value": "<strong>Can\u2019t find your unit?</strong>\nWe can recondition most manufacturers units.\nCall us on 01709 360370 or WhatsApp your photo",
             "tabs": "all",
             "toolbar": "basic",
             "media_upload": 0,
@@ -285,5 +309,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1795700000
+    "modified": 1795607643
 }
