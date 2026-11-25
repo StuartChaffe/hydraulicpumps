@@ -1,0 +1,17 @@
+{
+    "name": "acf/highlight-panel",
+    "title": "Highlight Panel",
+    "description": "Navy panel with a heading and intro, an optional cost comparison or image, and a grey strip of icon benefits underneath",
+    "category": "custom-blocks",
+    "icon": "star-filled",
+    "keywords": ["highlight", "benefits", "icons", "cost", "comparison", "panel"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "highlight-panel.php"
+    },
+    "align": "full",
+    "example": {
+        "attributes": { "mode": "preview", "data": { "preview_image": "preview.jpg" } }
+    }
+}

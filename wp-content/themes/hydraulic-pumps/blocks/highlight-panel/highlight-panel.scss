@@ -1,0 +1,160 @@
+// Highlight Panel: navy top over a grey strip of benefits, inside the same
+// grey frame as the Tabs block. Stacks on mobile.
+.highlight-panel {
+	&__frame {
+		padding: var(--spacing-xs);
+		background:
+			linear-gradient(247deg, rgb(1 52 115 / 0.2), rgb(245 245 245 / 0.2)),
+			var(--color-tertiary);
+		border-radius: var(--radius);
+	}
+
+	// Navy top: content on the left, an optional image on the right
+	&__top {
+		display: flex;
+		flex-direction: column;
+		padding: var(--spacing-l) var(--spacing) 0;
+		background-color: var(--color-primary);
+		border-radius: var(--radius) var(--radius) 0 0;
+		color: var(--color-text-reversed);
+
+		@include mq(medium) {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: var(--spacing-l);
+			padding-right: var(--spacing-l);
+			// Text lines up with --content-width, like the large page header
+			padding-left: calc(max(0px, (100% - var(--content-width)) / 2) + 1rem);
+		}
+
+		// No image to stand on the bottom: pad the bottom too
+		&:not(.highlight-panel__top--has-aside) {
+			padding-bottom: var(--spacing-l);
+		}
+
+		&:last-child {
+			border-radius: var(--radius);
+		}
+	}
+
+	&__content {
+		min-width: 0;
+		padding-bottom: var(--spacing-l);
+
+		@include mq(medium) {
+			flex: 0 1 34rem; // 540px
+		}
+
+		.highlight-panel__top:not(.highlight-panel__top--has-aside) & {
+			padding-bottom: 0;
+		}
+
+		.wp-block-heading {
+			margin-bottom: var(--spacing-s);
+			color: inherit;
+		}
+
+		p {
+			font-size: var(--text-size-m);
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Optional image on the right, standing on the bottom of the navy (e.g. the
+	// cost comparison graphic, which has the navy behind it)
+	&__media {
+		align-self: center;
+		width: 100%;
+		max-width: 33.375rem; // 534px, the comparison graphic's size in the design
+
+		@include mq(medium) {
+			flex: 0 1 33.375rem;
+			align-self: flex-end;
+		}
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	// Grey strip: the benefits in a row with dividers between them
+	&__bottom {
+		padding: var(--spacing) var(--spacing) var(--spacing-s);
+		background-color: var(--color-tertiary);
+		border-radius: 0 0 var(--radius) var(--radius);
+
+		@include mq(medium) {
+			padding-inline: var(--spacing-l);
+		}
+
+		&:first-child {
+			border-radius: var(--radius);
+		}
+	}
+
+	&__items {
+		display: grid;
+		gap: var(--spacing);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--text-size-m);
+		line-height: var(--leading-base);
+
+		@include mq(small-major) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include mq(large) {
+			grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+			gap: 0;
+		}
+	}
+
+	&__item {
+		margin: 0;
+
+		@include mq(large) {
+			padding: 0 var(--spacing);
+
+			&:first-child {
+				padding-left: 0;
+			}
+
+			& + & {
+				border-left: 1px solid rgb(1 52 115 / 0.3);
+			}
+		}
+	}
+
+	&__icon {
+		display: block;
+		width: 3.125rem;
+		height: 3rem;
+		margin-bottom: 0.5rem;
+		color: var(--color-secondary);
+
+		svg {
+			display: block;
+			width: auto;
+			max-width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__item-title {
+		display: block;
+		font-weight: var(--font-weight-bold);
+	}
+
+	&__footnote {
+		margin: var(--spacing) 0 0;
+		font-size: 0.75rem;
+	}
+}
