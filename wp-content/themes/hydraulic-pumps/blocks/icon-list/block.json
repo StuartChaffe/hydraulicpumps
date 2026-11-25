@@ -1,0 +1,19 @@
+{
+    "name": "acf/icon-list",
+    "title": "Icon List",
+    "description": "A list with an icon, bold title and short text on each line",
+    "category": "custom-blocks",
+    "icon": "editor-ul",
+    "keywords": ["icons", "list", "benefits", "features"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "icon-list.php"
+    },
+    "supports": {
+        "align": false
+    },
+    "example": {
+        "attributes": { "mode": "preview", "data": { "preview_image": "preview.jpg" } }
+    }
+}

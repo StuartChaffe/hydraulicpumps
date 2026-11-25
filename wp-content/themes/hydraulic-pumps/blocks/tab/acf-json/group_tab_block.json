@@ -29,7 +29,7 @@
             "name": "background_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "Sits on the right with the stripes and fade over it, like the page header.",
+            "instructions": "Sits on the right with the stripes and fade over it, like the page header. Not used by the Plain style.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

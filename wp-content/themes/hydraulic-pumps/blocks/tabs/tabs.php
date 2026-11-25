@@ -18,6 +18,7 @@ $wp_block   = $wp_block ?? null;
 $allowed_blocks = array( 'acf/tab' );
 $template       = array( array( 'acf/tab' ), array( 'acf/tab' ) );
 $tabs           = array();
+$plain          = get_field('style') === 'plain'; // No images, stripes or fade (see tabs.scss)
 
 if ( ! $is_preview && $wp_block instanceof WP_Block ) {
 	foreach ( $wp_block->parsed_block['innerBlocks'] ?? array() as $inner ) {
@@ -30,7 +31,7 @@ if ( ! $is_preview && $wp_block instanceof WP_Block ) {
 	}
 }
 ?>
-<section class="block tabs<?php echo $is_preview ? '' : ' tabs--front'; ?>">
+<section class="block tabs<?php echo $plain ? ' tabs--plain' : ''; ?><?php echo $is_preview ? '' : ' tabs--front'; ?>">
 	<div class="container">
 		<div class="tabs__frame">
 			<?php if ( $tabs ) : ?>

@@ -118,6 +118,9 @@ wp.domReady( () => {
 	// wp.blocks.unregisterBlockStyle( 'yoast/how-to-block' );
 	// wp.blocks.unregisterBlockStyle( 'yoast/faq-block' );
 	// wp.blocks.unregisterBlockStyle( 'gravityforms/form' );
+
+	// Light grey button with dark text, e.g. a second button beside the red one
+	wp.blocks.registerBlockStyle( 'core/button', { name: 'light', label: 'Light' } );
 } );
 
 // wp.blocks.registerBlockStyle('core/image', {

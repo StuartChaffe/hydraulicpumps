@@ -65,3 +65,11 @@ add_filter( 'acf/blocks/wrap_frontend_innerblocks', 'acf_should_wrap_innerblocks
 	function acf_should_wrap_innerblocks( $wrap, $name ) {
 	return false;
 }
+
+/**
+ * Icon List: the icon choices are the SVGs in blocks/icon-list/icons
+ */
+add_filter( 'acf/load_field/key=field_icon_list_icon', function ( $field ) {
+	$field['choices'] = origin_icon_list_icons();
+	return $field;
+} );

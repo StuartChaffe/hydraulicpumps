@@ -118,7 +118,8 @@
 	mask-image: url('../../images/phone.svg');
 }
 
-.btn--secondary {
+.btn--secondary,
+.is-style-light .wp-block-button__link {
 	--button-bg: var(--color-tertiary);
 	--button-color: var(--color-text-base);
 	// --button-hover-bg: var(--color-primary);

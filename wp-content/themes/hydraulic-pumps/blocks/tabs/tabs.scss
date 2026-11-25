@@ -351,3 +351,106 @@
 		}
 	}
 }
+
+// Plain style: white panels of content, without the background image, stripes
+// or fade. The content runs the full panel width, so it can be split into
+// columns (core/columns), e.g. text beside a list, or an image beside steps.
+.tabs--plain {
+	.tabs__panel {
+		min-height: 0;
+
+		&::before,
+		&::after {
+			content: none;
+		}
+	}
+
+	.tabs__background {
+		display: none; // Background images are for the Image style only
+	}
+
+	.tabs__content {
+		width: 100%;
+		padding: var(--spacing-l) var(--spacing);
+
+		@include mq(medium) {
+			padding: var(--spacing-xl) var(--spacing-l);
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+
+		.wp-block-heading {
+			text-shadow: none;
+		}
+	}
+
+	.wp-block-columns {
+		gap: var(--spacing) var(--spacing-xl);
+		margin-bottom: 0;
+	}
+
+	.wp-block-column > :last-child {
+		margin-bottom: 0;
+	}
+
+	.wp-block-image img {
+		border-radius: var(--radius-s);
+	}
+
+	// Lists match the paragraphs, with room between items (each item can be a
+	// bold title, then a line break and its text)
+	ul,
+	ol {
+		font-size: var(--text-size-m); // Same as paragraphs
+		line-height: var(--leading-base);
+	}
+
+	ul {
+		margin: 0 0 var(--spacing);
+		padding: 0;
+		list-style: none;
+
+		li {
+			margin-bottom: var(--spacing);
+		}
+	}
+
+	li > :last-child,
+	li:last-child {
+		margin-bottom: 0;
+	}
+
+	// Numbered list: the numbers in red circles
+	ol {
+		counter-reset: step;
+		margin: 0 0 var(--spacing);
+		padding: 0;
+
+		li {
+			counter-increment: step;
+			position: relative;
+			min-height: 34px;
+			margin-bottom: 1.125rem; // 18px
+			padding-left: 50px;
+
+			&::before {
+				content: counter(step);
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: grid;
+				place-items: center;
+				width: 34px;
+				height: 34px;
+				background-color: var(--color-secondary);
+				border-radius: 50%;
+				color: var(--color-white);
+				font-size: var(--text-size-s);
+				font-weight: var(--font-weight-bold);
+				line-height: 1;
+			}
+		}
+	}
+}

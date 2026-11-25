@@ -1,5 +1,6 @@
 <?php
-$allowed_blocks = array( 'core/heading', 'core/paragraph', 'core/buttons', 'core/list' );
+// Columns and images are for the Tabs block's Plain style
+$allowed_blocks = array( 'core/heading', 'core/paragraph', 'core/buttons', 'core/list', 'core/columns', 'core/image', 'acf/icon-list' );
 $template       = array(
 	array( 'core/heading', array( 'level' => 2, 'placeholder' => 'Heading' ) ),
 	array( 'core/paragraph', array( 'placeholder' => 'Content' ) ),

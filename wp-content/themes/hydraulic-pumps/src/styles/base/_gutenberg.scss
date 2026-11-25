@@ -85,7 +85,7 @@
 	img {
 		display: block;
 		width: 100%;
-		border-radius: var(--radius);
+		border-radius: var(--radius-s);
 	}
 
 	.wp-element-caption {
@@ -93,12 +93,61 @@
 		justify-self: start;
 		max-width: calc(100% - var(--spacing));
 		margin: 0;
-		padding: 0.875rem 1.5rem;
+		padding: 0.5rem 1rem;
 		background-color: rgb(0 0 0 / 0.85);
-		border-radius: 0 var(--radius) 0 var(--radius);
+		border: 0;
+		border-radius: 0 var(--radius-s) 0 var(--radius-s);
 		color: var(--color-text-reversed);
 		font-size: var(--text-size-xs);
 		line-height: 1.5;
+	}
+}
+
+// Columns (core block CSS isn't loaded): stacked on mobile, side by side
+// and equal width from medium, unless a column has its own width set
+.wp-block-columns {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing);
+
+	@include mq(medium) {
+		flex-direction: row;
+	}
+
+	&.are-vertically-aligned-top {
+		align-items: flex-start;
+	}
+
+	&.are-vertically-aligned-center {
+		align-items: center;
+	}
+
+	&.are-vertically-aligned-bottom {
+		align-items: flex-end;
+	}
+}
+
+.wp-block-column {
+	min-width: 0;
+
+	@include mq(medium) {
+		flex: 1 1 0;
+
+		&[style*="flex-basis"] {
+			flex-grow: 0;
+		}
+	}
+
+	&.is-vertically-aligned-top {
+		align-self: flex-start;
+	}
+
+	&.is-vertically-aligned-center {
+		align-self: center;
+	}
+
+	&.is-vertically-aligned-bottom {
+		align-self: flex-end;
 	}
 }
 

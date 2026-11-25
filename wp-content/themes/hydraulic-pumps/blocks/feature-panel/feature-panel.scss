@@ -34,9 +34,7 @@
 	&__image {
 		display: block;
 		width: 100%;
-		height: auto;
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
+		height: auto; // Full width at its own proportions, however tall
 		border-radius: var(--radius-s);
 	}
 

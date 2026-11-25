@@ -1,0 +1,44 @@
+// Icon List: red icon on the left, bold title over a short line of text
+.icon-list {
+	margin: 0 0 var(--spacing);
+	padding: 0;
+	list-style: none;
+	font-size: var(--text-size-m);
+	line-height: var(--leading-base);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.icon-list__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.5rem; // 24px, as designed
+	margin: 0;
+
+	& + & {
+		margin-top: var(--spacing);
+	}
+}
+
+.icon-list__icon {
+	flex: 0 0 42px;
+	color: var(--color-secondary);
+
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-height: 48px;
+	}
+}
+
+.icon-list__text {
+	min-width: 0;
+}
+
+.icon-list__title {
+	display: block;
+	font-weight: var(--font-weight-bold);
+}

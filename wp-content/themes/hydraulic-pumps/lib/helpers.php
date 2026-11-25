@@ -287,3 +287,23 @@ function page_header_vimeo( $url ) {
 		'title' => ! empty( $data['title'] ) ? $data['title'] : __( 'Video', 'origin' ),
 	);
 }
+
+/**
+ * The Icon List block's icons: each SVG in blocks/icon-list/icons, keyed by
+ * file name (e.g. "shield-tick" => "Shield tick").
+ */
+function origin_icon_list_icons() {
+	$icons = array();
+	foreach ( glob( get_theme_file_path( 'blocks/icon-list/icons/*.svg' ) ) as $file ) {
+		$name           = basename( $file, '.svg' );
+		$icons[ $name ] = ucfirst( str_replace( '-', ' ', $name ) );
+	}
+	return $icons;
+}
+
+/** An Icon List icon's SVG markup, or '' if there's no such icon. */
+function origin_icon_list_svg( $name ) {
+	$name = sanitize_file_name( $name );
+	$file = get_theme_file_path( 'blocks/icon-list/icons/' . $name . '.svg' );
+	return $name && is_readable( $file ) ? trim( file_get_contents( $file ) ) : '';
+}
