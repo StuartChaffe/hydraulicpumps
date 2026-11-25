@@ -20,9 +20,28 @@
 		.wp-block-heading {
 			color: var(--color-primary);
 		}
+
+		// Lists: each item in a light grey row, at the paragraph size
+		// (e.g. the cylinder capabilities: "Up to 1 metre bore")
+		ul {
+			margin: 0 0 var(--spacing);
+			padding: 0;
+			list-style: none;
+			font-size: var(--text-size-m);
+		}
+
+		li {
+			margin-bottom: var(--spacing-xs);
+			padding: 0.5rem 1rem;
+			background-color: var(--color-tertiary);
+			border-radius: var(--radius-s);
+		}
 	}
 
 	&__media {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing);
 		order: -1; // Image above the content on mobile
 
 		@include mq(medium) {

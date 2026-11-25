@@ -28,6 +28,31 @@
             "mime_types": ""
         },
         {
+            "key": "field_feature_panel_image_2",
+            "label": "Second image",
+            "name": "image_2",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional. Stacks under the first image, e.g. a before and after. Each image shows its Media Library caption.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_feature_panel_image_position",
             "label": "Image position",
             "name": "image_position",

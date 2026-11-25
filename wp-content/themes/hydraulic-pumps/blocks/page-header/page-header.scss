@@ -52,17 +52,33 @@
 	p {
 		font-size: var(--text-size-m);
 	}
+
+	// White glow keeps the text readable where it runs over the image (as in the Tabs block)
+	:is(h1, h2, h3, h4, h5, h6, p) {
+		// Stacked shadows make the glow stronger than a single one
+		text-shadow:
+			0 1px 14px var(--color-white),
+			0 1px 14px var(--color-white),
+			0 0 4px var(--color-white);
+	}
 }
 
 // Large spans the full header, so pad the content to line its text up with
 // .container (centred at --container-width, with 1rem side padding)
 .page-header--large .page-header__content {
 	// padding-inline: 1rem;
-	padding-top: var(--spacing-xl);
+	padding-top: var(--spacing-l); // Less on mobile, matching the small header's space above
 
 	@include mq(medium) {
+		padding-top: var(--spacing-xl);
+	}
+	// Mobile: the same padding as .grid__content
+	padding-inline: var(--spacing);
+
+	@include mq(medium) {
+		padding-right: 0;
 		padding-left: calc(max(0px, (100% - var(--content-width)) / 2) + 1rem);
-		padding-right: var(--spacing-l);
+		// padding-right: var(--spacing-l);
 	}
 }
 
@@ -99,6 +115,11 @@
 
 	.page-header__content {
 		text-align: center;
+
+		// Mobile: with .container's 1rem, --spacing in total, like the large header
+		@include mq($until: medium) {
+			padding-inline: calc(var(--spacing) - 1rem);
+		}
 
 		@include mq(medium) {
 			flex-basis: 70%;

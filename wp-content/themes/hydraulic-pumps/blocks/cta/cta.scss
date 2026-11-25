@@ -56,6 +56,22 @@
 		.wp-block-heading {
 			color: var(--color-text-reversed);
 		}
+
+		// Text links in white, underlined (not the buttons)
+		a:not(.wp-block-button__link) {
+			color: inherit;
+			text-decoration: underline;
+
+			&:hover {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+
+		// A line of small print after the buttons sits a little further down
+		.wp-block-buttons + p {
+			margin-top: var(--spacing);
+		}
 	}
 }
 
@@ -109,9 +125,10 @@
 		padding: var(--spacing);
 		background-color: rgb(255 255 255 / 0.7);
 		border-radius: 0 0 var(--cta-inner-radius) var(--cta-inner-radius);
-		text-align: left;
+		text-align: center; // Centred on mobile, left beside the button from medium
 
 		@include mq(medium) {
+			text-align: left;
 			flex-direction: row;
 			justify-content: space-between;
 			max-width: none;
@@ -124,7 +141,9 @@
 		font-size: var(--text-size-m);
 		line-height: 1.36; // 30px at 22px
 
+		// The opening question on its own line
 		strong {
+			display: block;
 			color: var(--color-text-base);
 		}
 	}
