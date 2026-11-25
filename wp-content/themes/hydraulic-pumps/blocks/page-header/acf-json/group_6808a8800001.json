@@ -1,6 +1,6 @@
 {
     "key": "group_6808a8800001",
-    "title": "Block\/Page Header",
+    "title": "Block/Page Header",
     "fields": [
         {
             "key": "field_6808a8800007",
@@ -93,6 +93,65 @@
             "mime_types": "",
             "allow_in_bindings": 0,
             "preview_size": "medium"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "key": "field_6808a8800009",
+            "label": "Video",
+            "name": "video_url",
+            "type": "url",
+            "instructions": "A Vimeo link, e.g. https://vimeo.com/93631625. Adds a play link under the text that opens the video in a lightbox. Optional.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6808a8800007",
+                        "operator": "==",
+                        "value": "large"
+                    }
+                ]
+            ],
+            "default_value": "",
+            "placeholder": "https://vimeo.com/"
+        },
+        {
+            "key": "field_6808a880000a",
+            "label": "Video link text",
+            "name": "video_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6808a8800007",
+                        "operator": "==",
+                        "value": "large"
+                    },
+                    {
+                        "field": "field_6808a8800009",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Watch our video",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Watch our video",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -100,7 +159,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/page-header"
+                "value": "acf/page-header"
             }
         ]
     ],
@@ -116,5 +175,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793983141
+    "modified": 1795606123
 }

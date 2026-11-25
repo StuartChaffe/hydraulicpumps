@@ -258,3 +258,32 @@ add_action( 'login_head', 'my_login_logo', 20 ); // After core's login styles (p
 // The logo links to the site, not WordPress.org
 add_filter( 'login_headerurl', fn() => home_url( '/' ) );
 add_filter( 'login_headertext', fn() => get_bloginfo( 'name' ) );
+
+
+
+/**
+ * Vimeo details for a video URL: its ID and title (for the player's iframe title).
+ * Used by the Page Header block. The oEmbed lookup is cached for a week.
+ * Returns null if the URL isn't a Vimeo video.
+ */
+function page_header_vimeo( $url ) {
+	if ( ! $url || ! preg_match( '~vimeo\.com/(?:.*?/)?(\d+)~', $url, $match ) ) return null;
+	$id  = $match[1];
+	$key = 'vimeo_oembed_' . $id;
+
+	$data = get_transient( $key );
+	if ( $data === false ) {
+		$data     = array();
+		$response = wp_remote_get( 'https://vimeo.com/api/oembed.json?url=' . rawurlencode( 'https://vimeo.com/' . $id ) );
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
+			$data = (array) json_decode( wp_remote_retrieve_body( $response ), true );
+		}
+		// Cache failures for an hour so a Vimeo outage doesn't slow every page
+		set_transient( $key, $data, $data ? WEEK_IN_SECONDS : HOUR_IN_SECONDS );
+	}
+
+	return array(
+		'id'    => $id,
+		'title' => ! empty( $data['title'] ) ? $data['title'] : __( 'Video', 'origin' ),
+	);
+}

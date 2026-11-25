@@ -123,3 +123,99 @@
 // .page-header__button {
 // 	margin-top: var(--spacing-l);
 // }
+
+
+// "Watch our video": a play icon in an outlined circle, beside the text
+.page-header__video-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem; // 12px, as designed
+	max-width: 14rem; // Wraps the text onto two lines, as designed
+	color: var(--color-primary);
+	font-size: var(--text-size-m);
+	font-weight: var(--font-weight-bold);
+	line-height: 1.2;
+	text-decoration: none;
+
+	&:hover,
+	&:focus-visible {
+		color: var(--color-primary-darker);
+		text-decoration: none; // Beats the global a:hover underline
+
+		.page-header__video-icon {
+			background-color: var(--color-primary);
+			color: var(--color-text-reversed);
+		}
+	}
+}
+
+.page-header__video-icon {
+	display: flex;
+	flex: 0 0 60px;
+	align-items: center;
+	justify-content: center;
+	height: 60px;
+	border: 3px solid currentColor;
+	border-radius: 50%;
+	transition: background-color var(--transition-base), color var(--transition-base);
+
+	svg {
+		width: 14px;
+		height: 20px;
+		margin-left: 3px; // Optically centre the triangle
+	}
+}
+
+// The lightbox the video opens in (see page-header.js), 16:9 and up to 1000px wide
+.video-lightbox {
+	width: min(1000px, 100% - 2rem);
+	max-width: none;
+	padding: 0;
+	border: 0;
+	overflow: visible; // Lets the close button sit above the frame
+	background: none;
+
+	&::backdrop {
+		background-color: rgb(0 0 0 / 85%);
+	}
+}
+
+.video-lightbox__frame {
+	aspect-ratio: 16 / 9;
+	background-color: #000;
+
+	iframe {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+}
+
+// Same close icon as Before & After (close.svg), on a white circle so it shows on the dark backdrop
+.video-lightbox__close {
+	position: absolute;
+	right: 0;
+	bottom: 100%;
+	margin-bottom: var(--spacing-xs);
+	padding: 0;
+	background-color: var(--color-white);
+	border: 0;
+	border-radius: 50%;
+	cursor: pointer;
+
+	img {
+		display: block;
+		width: 42px;
+		height: 42px;
+	}
+
+	&:hover img {
+		opacity: 0.7;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-white);
+		outline-offset: 2px;
+	}
+}

@@ -10,5 +10,6 @@ import './components/content-tabs';
 import './components/posts';
 import './components/pump-search';
 import './components/before-after';
+import './components/page-header';
 import './components/image-gallery';
 import './components/menu';
