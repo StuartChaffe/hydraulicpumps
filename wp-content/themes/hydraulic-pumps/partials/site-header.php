@@ -15,8 +15,9 @@
 				) ); ?>
 			</nav>
 			<div class="btn-group">
-				<a href="mailto:sales@hydraulicpumps.co.uk" class="btn btn--email">sales@hydraulicpumps.co.uk</a>
-				<a href="tel:+441709360370" class="btn btn--phone">01709 360370</a>
+				<?php // The text is hidden on mobile, leaving just the icons (see _header.scss) ?>
+				<a href="mailto:sales@hydraulicpumps.co.uk" class="btn btn--email"><span class="btn__text">sales@hydraulicpumps.co.uk</span></a>
+				<a href="tel:+441709360370" class="btn btn--phone"><span class="btn__text">01709 360370</span></a>
 			</div>
 		</div>
 		<button class="site-header__menu-btn hamburger" data-toggle="#mobile-menu" data-toggle-body-class="nav-open" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -53,10 +54,7 @@
 				'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
 				'walker'         => new BEM_Nav_Walker( 'secondary-nav' ),
 			) ); ?>
-			<div class="btn-group">
-				<a href="mailto:sales@hydraulicpumps.co.uk" class="btn btn--email">sales@<wbr>hydraulicpumps.co.uk</a>
-				<a href="tel:+441709360370" class="btn btn--phone">01709 360370</a>
-			</div>
+			<?php // Email and phone are in the header itself on mobile, as icons ?>
 		</div>
 	</nav>
 </div>

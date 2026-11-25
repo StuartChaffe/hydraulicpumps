@@ -5,6 +5,11 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+
+	// Medium to large: no gaps between the links, so they fit the width
+	@include mq(medium, large) {
+		gap: 0;
+	}
 }
 
 .primary-nav__link {
