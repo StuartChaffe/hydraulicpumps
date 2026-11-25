@@ -1,7 +1,7 @@
 <?php
 /** @var array $block Block settings, passed in by ACF. */
 if ( origin_block_preview( $block ) ) return; // Inserter preview: show preview.jpg instead
-$allowed_blocks = array( 'core/heading', 'core/paragraph', 'core/buttons', 'core/list', 'core/image', 'acf/block-list');
+$allowed_blocks = array( 'core/post-title', 'core/heading', 'core/paragraph', 'core/buttons', 'core/list', 'core/image', 'acf/block-list');
 $size             = get_field('size') === 'small' ? 'small' : 'large';
 // Images and video are only used by the large size (the fields are hidden for small)
 $background_image = $size === 'large' ? get_field('background_image') : null;
