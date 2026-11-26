@@ -34,6 +34,15 @@ $categories = $posts ? get_terms( array(
 							<button class="posts__filter" type="button" data-filter=".category-<?php echo esc_attr( $category->slug ); ?>" data-slug="<?php echo esc_attr( $category->slug ); ?>" aria-pressed="false"><?php echo esc_html( $category->name ); ?></button>
 						<?php endforeach; ?>
 					</div>
+					<?php // Small screens: the same filters as a dropdown (needs JavaScript, see posts.js) ?>
+					<div class="posts__select-wrap">
+						<select class="posts__select" aria-labelledby="posts-filters-title">
+							<option value="all"><?php esc_html_e( 'All', 'origin' ); ?></option>
+							<?php foreach ( $categories as $category ) : ?>
+								<option value=".category-<?php echo esc_attr( $category->slug ); ?>"><?php echo esc_html( $category->name ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
 				</div>
 			<?php endif; ?>
 

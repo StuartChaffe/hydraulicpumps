@@ -1,6 +1,6 @@
 import mixitup from 'mixitup';
 
-// Posts block: category filter buttons and "Load more", animated by MixItUp.
+// Posts block: category filter buttons (a dropdown on small screens) and "Load more", animated by MixItUp.
 // MixItUp's own pagination is a paid add-on, so paging is done here: the
 // first N posts matching the filter get .is-shown, and MixItUp filters to
 // those. "Load more" adds another N. A URL hash matching a category slug
@@ -11,6 +11,7 @@ function initPosts(block) {
 
 	const cards = [...grid.querySelectorAll('.mix')];
 	const buttons = [...block.querySelectorAll('.posts__filter')];
+	const select = block.querySelector('.posts__select'); // Small-screen dropdown
 	const more = block.querySelector('.posts__load-more');
 	const perPage = parseInt(block.dataset.perPage, 10) || 6;
 
@@ -30,8 +31,10 @@ function initPosts(block) {
 		return matching;
 	};
 
+	// Keep the buttons and the dropdown showing the same filter
 	const setPressed = button => {
 		buttons.forEach(b => b.setAttribute('aria-pressed', b === button ? 'true' : 'false'));
+		if (select) select.value = button.dataset.filter;
 	};
 
 	mark();
@@ -44,14 +47,21 @@ function initPosts(block) {
 		load: { filter: '.is-shown' },
 	});
 
+	const applyFilter = button => {
+		filter = button.dataset.filter === 'all' ? '.mix' : button.dataset.filter;
+		limit = perPage;
+		setPressed(button);
+		mark();
+		mixer.filter('.is-shown');
+	};
+
 	buttons.forEach(button => {
-		button.addEventListener('click', () => {
-			filter = button.dataset.filter === 'all' ? '.mix' : button.dataset.filter;
-			limit = perPage;
-			setPressed(button);
-			mark();
-			mixer.filter('.is-shown');
-		});
+		button.addEventListener('click', () => applyFilter(button));
+	});
+
+	select?.addEventListener('change', () => {
+		const button = buttons.find(b => b.dataset.filter === select.value);
+		if (button) applyFilter(button);
 	});
 
 	more?.addEventListener('click', () => {

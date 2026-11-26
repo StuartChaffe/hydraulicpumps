@@ -144,6 +144,61 @@
 		gap: var(--spacing-xs);
 	}
 
+	// Small screens swap the buttons for a dropdown, once posts.js has run
+	// (without JavaScript neither filters, so the buttons stay)
+	&__select-wrap {
+		display: none;
+		position: relative;
+		max-width: 22rem;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: 1rem;
+			width: 8px;
+			height: 16px;
+			background-color: var(--color-primary);
+			mask: url('../../src/images/chevron.svg') center / contain no-repeat;
+			transform: translateY(-50%) rotate(90deg);
+			pointer-events: none;
+		}
+	}
+
+	&__select {
+		width: 100%;
+		height: auto;
+		padding: 0.625rem 2.75rem 0.625rem 1rem;
+		background-color: var(--color-tertiary);
+		color: var(--color-text-base);
+		border: 0;
+		border-radius: var(--radius-s);
+		font-size: var(--text-size-s);
+		font-weight: var(--font-weight-bold);
+		line-height: 1.33;
+		appearance: none;
+		cursor: pointer;
+
+		&:focus,
+		&:focus-visible {
+			border: 0;
+			outline: 2px solid var(--color-primary);
+			outline-offset: 2px;
+		}
+	}
+
+	&.is-ready {
+		@include mq($until: medium) {
+			.posts__filter-list {
+				display: none;
+			}
+
+			.posts__select-wrap {
+				display: block;
+			}
+		}
+	}
+
 	&__filter {
 		@include pill-tab('&[aria-pressed="true"]');
 	}
