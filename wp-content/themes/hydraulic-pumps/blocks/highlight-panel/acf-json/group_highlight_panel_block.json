@@ -86,8 +86,8 @@
                     "label": "Icon",
                     "name": "icon",
                     "aria-label": "",
-                    "type": "select",
-                    "instructions": "To add an icon, put its SVG in blocks\/icon-list\/icons.",
+                    "type": "image",
+                    "instructions": "An SVG works best: it shows in the brand red. Keep it simple and square-ish, one colour.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -95,24 +95,18 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "calendar": "Calendar",
-                        "coins": "Coins",
-                        "leaf": "Leaf",
-                        "shield-tick": "Shield tick",
-                        "stopwatch": "Stopwatch"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg,png",
                     "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "parent_repeater": "field_highlight_panel_items",
-                    "create_options": 0,
-                    "save_options": 0
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_highlight_panel_items"
                 },
                 {
                     "key": "field_highlight_panel_item_title",
@@ -204,5 +198,5 @@
     "enable_acf_abilities": true,
     "ai_description": "",
     "allow_ai_access": false,
-    "modified": 1795623763
+    "modified": 1795695892
 }

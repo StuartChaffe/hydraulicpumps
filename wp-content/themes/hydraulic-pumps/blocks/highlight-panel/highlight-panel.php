@@ -36,9 +36,7 @@ $note    = $field('footnote');
 						<ul class="highlight-panel__items">
 							<?php foreach ( $items as $item ) : ?>
 								<li class="highlight-panel__item">
-									<?php if ( $svg = origin_icon_list_svg( $item['icon'] ?? '' ) ) : ?>
-										<span class="highlight-panel__icon" aria-hidden="true"><?php echo $svg; // Theme file ?></span>
-									<?php endif; ?>
+									<?php echo origin_icon( $item['icon'] ?? 0, 'highlight-panel__icon' ); ?>
 									<?php if ( ! empty( $item['title'] ) ) : ?>
 										<strong class="highlight-panel__item-title"><?php echo esc_html( $item['title'] ); ?></strong>
 									<?php endif; ?>

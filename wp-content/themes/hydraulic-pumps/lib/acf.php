@@ -63,12 +63,3 @@ add_filter( 'acf/blocks/wrap_frontend_innerblocks', 'acf_should_wrap_innerblocks
 	return false;
 }
 
-/**
- * Icon List and Highlight Panel: the icon choices are the SVGs in blocks/icon-list/icons
- */
-add_filter( 'acf/load_field/key=field_icon_list_icon', 'origin_icon_choices' );
-add_filter( 'acf/load_field/key=field_highlight_panel_item_icon', 'origin_icon_choices' );
-function origin_icon_choices( $field ) {
-	$field['choices'] = origin_icon_list_icons();
-	return $field;
-}

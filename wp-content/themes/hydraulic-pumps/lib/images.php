@@ -47,3 +47,27 @@ add_filter( 'post_thumbnail_html', 'origin_remove_thumbnail_dimensions', 10, 3 )
 		return 'src="'.$image_src.'" srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
 	}
  }
+
+
+
+/**
+ * SVG uploads, for icons (Icon List, Highlight Panel). Only for users who can
+ * already post unfiltered HTML (admins and editors), since an SVG can carry
+ * script. The icons are shown as a CSS mask, never inlined.
+ */
+add_filter( 'upload_mimes', function ( $mimes ) {
+	if ( current_user_can( 'unfiltered_html' ) ) {
+		$mimes['svg'] = 'image/svg+xml';
+	}
+	return $mimes;
+} );
+
+// PHP reports SVGs as image/svg+xml (or text/plain without the XML prolog),
+// which WordPress's real-type check rejects; trust the extension instead.
+add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mimes ) {
+	if ( ! $data['type'] && current_user_can( 'unfiltered_html' ) && 'svg' === strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) ) ) {
+		$data['ext']  = 'svg';
+		$data['type'] = 'image/svg+xml';
+	}
+	return $data;
+}, 10, 4 );

@@ -289,21 +289,18 @@ function page_header_vimeo( $url ) {
 }
 
 /**
- * The Icon List block's icons: each SVG in blocks/icon-list/icons, keyed by
- * file name (e.g. "shield-tick" => "Shield tick").
+ * An uploaded icon (Icon List, Highlight Panel), or '' if there's none. An SVG
+ * is shown as a CSS mask, so it takes the text colour (the brand red) and its
+ * markup never reaches the page; any other image shows as it is.
  */
-function origin_icon_list_icons() {
-	$icons = array();
-	foreach ( glob( get_theme_file_path( 'blocks/icon-list/icons/*.svg' ) ) as $file ) {
-		$name           = basename( $file, '.svg' );
-		$icons[ $name ] = ucfirst( str_replace( '-', ' ', $name ) );
-	}
-	return $icons;
-}
+function origin_icon( $id, $class ) {
+	$id = (int) $id;
+	if ( ! $id || ! wp_attachment_is_image( $id ) && 'image/svg+xml' !== get_post_mime_type( $id ) ) return '';
 
-/** An Icon List icon's SVG markup, or '' if there's no such icon. */
-function origin_icon_list_svg( $name ) {
-	$name = sanitize_file_name( $name );
-	$file = get_theme_file_path( 'blocks/icon-list/icons/' . $name . '.svg' );
-	return $name && is_readable( $file ) ? trim( file_get_contents( $file ) ) : '';
+	if ( 'image/svg+xml' === get_post_mime_type( $id ) ) {
+		$url = wp_get_attachment_url( $id );
+		return $url ? sprintf( '<span class="%s %s--mask" style="--icon: url(\'%s\')" aria-hidden="true"></span>', esc_attr( $class ), esc_attr( $class ), esc_url( $url ) ) : '';
+	}
+
+	return sprintf( '<span class="%s" aria-hidden="true">%s</span>', esc_attr( $class ), wp_get_attachment_image( $id, 'thumbnail', false, array( 'alt' => '' ) ) );
 }

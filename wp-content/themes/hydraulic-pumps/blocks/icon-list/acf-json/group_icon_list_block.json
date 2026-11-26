@@ -11,7 +11,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "pagination": 0,
             "min": 0,
@@ -25,20 +29,26 @@
                     "label": "Icon",
                     "name": "icon",
                     "aria-label": "",
-                    "type": "select",
-                    "instructions": "To add an icon, put its SVG in blocks\/icon-list\/icons.",
+                    "type": "image",
+                    "instructions": "An SVG works best: it shows in the brand red. Keep it simple and square-ish, one colour.",
                     "required": 1,
                     "conditional_logic": 0,
-                    "wrapper": { "width": "", "class": "", "id": "" },
-                    "choices": {},
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg,png",
                     "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
+                    "preview_size": "thumbnail",
                     "parent_repeater": "field_icon_list_items"
                 },
                 {
@@ -50,7 +60,11 @@
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
-                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
@@ -68,7 +82,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
-                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
@@ -99,7 +117,8 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "allow_ai_access": false,
+    "enable_acf_abilities": true,
     "ai_description": "",
-    "modified": 1795618000
+    "allow_ai_access": false,
+    "modified": 1795695927
 }
