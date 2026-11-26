@@ -456,6 +456,152 @@
             "allow_null": 1
         },
         {
+            "key": "field_hp_pf_cta_title",
+            "label": "Title",
+            "name": "pump_finder_cta_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The Pump Finder panel (the CTA block’s Pump finder style). Each page can change it in the block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Pump Finder",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hp_pf_cta_intro",
+            "label": "Intro",
+            "name": "pump_finder_cta_intro",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Check our database to see if we can repair your unit!",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hp_pf_cta_placeholder",
+            "label": "Search placeholder",
+            "name": "pump_finder_cta_placeholder",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Search pump name or ID",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hp_pf_cta_strip_text",
+            "label": "Strip text",
+            "name": "pump_finder_cta_strip_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "The text in the strip along the bottom.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<strong>Can’t find your unit?<\/strong> We can recondition most manufacturers units.\n\nCall us on 01709 360370 or WhatsApp your photo",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_hp_pf_cta_whatsapp_label",
+            "label": "WhatsApp label",
+            "name": "pump_finder_cta_whatsapp_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Send a photo",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hp_pf_cta_whatsapp_number",
+            "label": "WhatsApp number",
+            "name": "pump_finder_cta_whatsapp_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "07851 542552",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hp_pf_cta_qr_code",
+            "label": "WhatsApp QR code",
+            "name": "pump_finder_cta_qr_code",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Leave empty to use the theme’s QR code.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail",
+            "default_value": ""
+        },
+        {
             "key": "field_607b050b81cae",
             "label": "Global Alert",
             "name": "",
@@ -544,5 +690,5 @@
     "enable_acf_abilities": true,
     "ai_description": "",
     "allow_ai_access": false,
-    "modified": 1795623763
+    "modified": 1795703947
 }

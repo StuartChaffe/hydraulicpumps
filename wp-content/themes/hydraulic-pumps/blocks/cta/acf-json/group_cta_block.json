@@ -1,6 +1,6 @@
 {
     "key": "group_cta_block",
-    "title": "Block/CTA",
+    "title": "Block\/CTA",
     "fields": [
         {
             "key": "field_cta_style",
@@ -26,7 +26,9 @@
             "multiple": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_cta_background",
@@ -60,7 +62,9 @@
             "multiple": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_cta_width",
@@ -87,12 +91,12 @@
             "layout": "horizontal"
         },
         {
-            "key": "field_cta_pf_title",
-            "label": "Title",
-            "name": "pf_title",
+            "key": "field_cta_pf_custom",
+            "label": "Content",
+            "name": "pf_custom",
             "aria-label": "",
-            "type": "text",
-            "instructions": "",
+            "type": "true_false",
+            "instructions": "The Pump Finder panel's content is set once for the whole site, in Theme Settings > Pump finder. Turn this on to change it on this page only.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -108,7 +112,41 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Pump Finder",
+            "message": "Change the content on this page",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_cta_pf_title",
+            "label": "Title",
+            "name": "pf_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Anything left empty uses the site-wide content.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_cta_style",
+                        "operator": "==",
+                        "value": "pump_finder"
+                    },
+                    {
+                        "field": "field_cta_pf_custom",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -120,7 +158,7 @@
             "name": "pf_intro",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Anything left empty uses the site-wide content.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -128,6 +166,11 @@
                         "field": "field_cta_style",
                         "operator": "==",
                         "value": "pump_finder"
+                    },
+                    {
+                        "field": "field_cta_pf_custom",
+                        "operator": "==",
+                        "value": "1"
                     }
                 ]
             ],
@@ -136,7 +179,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Check our database to see if we can repair your unit!",
+            "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -148,7 +191,7 @@
             "name": "pf_placeholder",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Anything left empty uses the site-wide content.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -156,6 +199,11 @@
                         "field": "field_cta_style",
                         "operator": "==",
                         "value": "pump_finder"
+                    },
+                    {
+                        "field": "field_cta_pf_custom",
+                        "operator": "==",
+                        "value": "1"
                     }
                 ]
             ],
@@ -164,7 +212,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Search pump name or ID",
+            "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -176,7 +224,7 @@
             "name": "pf_strip_text",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "The text in the strip along the bottom",
+            "instructions": "Anything left empty uses the site-wide content.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -184,6 +232,11 @@
                         "field": "field_cta_style",
                         "operator": "==",
                         "value": "pump_finder"
+                    },
+                    {
+                        "field": "field_cta_pf_custom",
+                        "operator": "==",
+                        "value": "1"
                     }
                 ]
             ],
@@ -192,7 +245,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<strong>Can\u2019t find your unit?</strong> We can recondition most manufacturers units.\n\nCall us on 01709 360370 or WhatsApp your photo",
+            "default_value": "",
             "tabs": "all",
             "toolbar": "basic",
             "media_upload": 0,
@@ -204,7 +257,7 @@
             "name": "pf_whatsapp_label",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Anything left empty uses the site-wide content.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -212,6 +265,11 @@
                         "field": "field_cta_style",
                         "operator": "==",
                         "value": "pump_finder"
+                    },
+                    {
+                        "field": "field_cta_pf_custom",
+                        "operator": "==",
+                        "value": "1"
                     }
                 ]
             ],
@@ -220,7 +278,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Send a photo",
+            "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -232,7 +290,7 @@
             "name": "pf_whatsapp_number",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Anything left empty uses the site-wide content.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -240,6 +298,11 @@
                         "field": "field_cta_style",
                         "operator": "==",
                         "value": "pump_finder"
+                    },
+                    {
+                        "field": "field_cta_pf_custom",
+                        "operator": "==",
+                        "value": "1"
                     }
                 ]
             ],
@@ -248,7 +311,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "07851 542552",
+            "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -260,7 +323,7 @@
             "name": "pf_qr_code",
             "aria-label": "",
             "type": "image",
-            "instructions": "Leave empty to use the theme's QR code",
+            "instructions": "Leave empty to use the theme's QR code. Anything left empty uses the site-wide content.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -268,6 +331,11 @@
                         "field": "field_cta_style",
                         "operator": "==",
                         "value": "pump_finder"
+                    },
+                    {
+                        "field": "field_cta_pf_custom",
+                        "operator": "==",
+                        "value": "1"
                     }
                 ]
             ],
@@ -285,7 +353,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "thumbnail"
+            "preview_size": "thumbnail",
+            "default_value": ""
         }
     ],
     "location": [
@@ -293,7 +362,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf/cta"
+                "value": "acf\/cta"
             }
         ]
     ],
@@ -307,7 +376,8 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "allow_ai_access": false,
+    "enable_acf_abilities": true,
     "ai_description": "",
-    "modified": 1795607643
+    "allow_ai_access": false,
+    "modified": 1795703947
 }

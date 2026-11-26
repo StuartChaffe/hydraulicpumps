@@ -6,15 +6,21 @@ $background     = ! $is_pump_finder && get_field('background') === 'navy' ? 'nav
 $full           = get_field('width') === 'full' ? ' cta--full' : ''; // Standard (the default) changes nothing
 
 if ( $is_pump_finder ) :
-	// Fields default to the Figma copy, so it only needs changing if it's different
-	$field = fn( $name ) => origin_block_field( $block, $name, 'field_cta_' . $name );
+	// The content is set once for the site (Theme Settings > Pump finder). A page
+	// can change it with the block's "Change the content on this page" switch;
+	// any field it leaves empty still uses the site-wide content.
+	$custom = (bool) get_field('pf_custom');
+	$field  = function ( $name ) use ( $custom ) {
+		$value = $custom ? get_field( $name ) : '';
+		return $value ?: get_field( 'pump_finder_cta_' . substr( $name, 3 ), 'option' );
+	};
 	$title       = $field('pf_title');
 	$intro       = $field('pf_intro');
 	$placeholder = $field('pf_placeholder'); // Empty: the form's own default
 	$strip_text  = $field('pf_strip_text');
 	$wa_label    = $field('pf_whatsapp_label');
 	$wa_number   = $field('pf_whatsapp_number');
-	$qr_code     = get_field('pf_qr_code');
+	$qr_code     = $field('pf_qr_code');
 	$search_id   = 'cta-search-' . ( $block['id'] ?? wp_unique_id() );
 
 	// wa.me needs the international number: digits only, with 44 in place of the leading 0
