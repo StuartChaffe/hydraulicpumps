@@ -58,6 +58,45 @@ li p {
 	margin: 0;
 }
 
+// A List block straight on a page (not inside another block, which styles its
+// own): paragraph-sized, with red bullets or numbers. Indented past the
+// content column's side padding.
+#content > :is(ul, ol).wp-block-list {
+	margin-top: 0;
+	margin-bottom: var(--spacing);
+	padding-left: calc(1rem + 1.25em);
+	font-size: var(--text-size-m);
+	line-height: var(--leading-base);
+	list-style: disc;
+
+	li + li {
+		margin-top: 0.375em;
+	}
+
+	li::marker {
+		color: var(--color-secondary);
+	}
+}
+
+// A paragraph straight on a page keeps its gap below even when it's the page's
+// last paragraph (p:last-of-type zeroes it), unless nothing follows it
+#content > p:not(:last-child) {
+	margin-bottom: var(--spacing);
+}
+
+// A paragraph leading into a list sits a little closer to it
+#content > p:has(+ .wp-block-list) {
+	margin-bottom: var(--spacing-s);
+}
+
+#content > ol.wp-block-list {
+	list-style: decimal;
+
+	li::marker {
+		font-weight: var(--font-weight-bold);
+	}
+}
+
 blockquote {
 	padding-left: 1em;
 	border-left: 4px solid var(--color-text-dark);
