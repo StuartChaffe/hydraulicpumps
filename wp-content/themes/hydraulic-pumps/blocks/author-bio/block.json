@@ -1,0 +1,17 @@
+{
+    "name": "acf/author-bio",
+    "title": "Author Bio",
+    "description": "About the author: a photo (or their initials), name, role, a short bio and contact details",
+    "category": "custom-blocks",
+    "icon": "admin-users",
+    "keywords": ["author", "bio", "engineer", "about", "person"],
+    "acf": {
+        "blockVersion": 3,
+        "mode": "preview",
+        "renderTemplate": "author-bio.php"
+    },
+    "align": "full",
+    "example": {
+        "attributes": { "mode": "preview", "data": { "preview_image": "preview.jpg" } }
+    }
+}

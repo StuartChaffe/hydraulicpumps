@@ -1,0 +1,114 @@
+// Author Bio (author-bio.php): grey card, round navy avatar with initials (or a
+// photo) beside the label, name, bio and contact links. Stacks on small screens.
+.author-bio {
+	&__card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--spacing);
+		padding: var(--spacing);
+		background-color: var(--color-tertiary);
+		border-radius: var(--radius);
+
+		@include mq(medium) {
+			flex-direction: row;
+			align-items: center;
+			gap: 3rem; // 48px
+			padding: 3rem 3.5rem; // 48px 56px
+		}
+	}
+
+	&__avatar {
+		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		width: 6.5rem;
+		height: 6.5rem;
+		background-color: var(--color-primary);
+		border-radius: 50%;
+
+		@include mq(medium) {
+			width: 10.625rem; // 170px
+			height: 10.625rem;
+		}
+	}
+
+	&__photo {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__initials {
+		color: var(--color-white);
+		font-size: 2.25rem;
+		font-weight: var(--font-weight-heavy);
+		line-height: 1;
+		letter-spacing: -0.05em;
+
+		@include mq(medium) {
+			font-size: 3.5rem; // 56px
+		}
+	}
+
+	&__copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem; // 12px
+		min-width: 0;
+	}
+
+	&__label {
+		margin: 0;
+		color: var(--color-secondary);
+		font-size: 0.875rem; // 14px
+		font-weight: var(--font-weight-bold);
+		letter-spacing: 0.08em;
+		line-height: var(--leading-tight);
+		text-transform: uppercase;
+	}
+
+	&__name {
+		margin: 0;
+		color: var(--color-primary);
+		font-size: var(--text-size-l);
+		font-weight: var(--font-weight-heavy);
+		letter-spacing: -0.03em;
+		line-height: var(--leading-tight);
+	}
+
+	&__text {
+		margin: 0;
+		font-size: var(--text-size-s);
+		line-height: 1.33; // 24px at 18px
+	}
+
+	&__contact {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		column-gap: 0.75rem;
+		margin: 0;
+		color: var(--color-secondary);
+		font-size: var(--text-size-s);
+		font-weight: var(--font-weight-semi);
+
+		a {
+			color: inherit;
+			text-decoration: none;
+
+			&:hover {
+				color: var(--color-secondary-darker);
+				text-decoration: underline;
+			}
+		}
+
+		// The email is underlined, the phone number only on hover (as designed)
+		a[href^="mailto:"] {
+			text-decoration: underline;
+		}
+	}
+}
