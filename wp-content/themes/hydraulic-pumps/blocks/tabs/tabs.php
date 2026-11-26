@@ -32,7 +32,7 @@ if ( ! $is_preview && $wp_block instanceof WP_Block ) {
 }
 ?>
 <section class="block tabs<?php echo $plain ? ' tabs--plain' : ''; ?><?php echo $is_preview ? '' : ' tabs--front'; ?>">
-	<div class="container">
+	<div class="container<?php echo $plain ? ' container--content' : ''; ?>"><?php // Plain sits with the page content; the image style is wider ?>
 		<div class="tabs__frame">
 			<?php if ( $tabs ) : ?>
 				<div class="tabs__list" role="tablist">
