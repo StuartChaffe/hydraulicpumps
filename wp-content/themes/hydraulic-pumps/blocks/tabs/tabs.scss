@@ -417,6 +417,11 @@
 		}
 	}
 
+	// The editor gives each list item block a disc
+	li {
+		list-style: none;
+	}
+
 	li > :last-child,
 	li:last-child {
 		margin-bottom: 0;
