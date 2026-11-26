@@ -433,29 +433,6 @@
             "selected": 0
         },
         {
-            "key": "field_hp_pump_finder_page",
-            "label": "Pump finder page",
-            "name": "pump_finder_page",
-            "aria-label": "",
-            "type": "page_link",
-            "instructions": "Where pump searches go (the page with the Pump Finder block). Leave empty to use \/pump-finder\/.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "post_status": "",
-            "taxonomy": "",
-            "allow_archives": 0,
-            "multiple": 0,
-            "allow_null": 1
-        },
-        {
             "key": "field_hp_pf_cta_title",
             "label": "Title",
             "name": "pump_finder_cta_title",
@@ -690,5 +667,5 @@
     "enable_acf_abilities": true,
     "ai_description": "",
     "allow_ai_access": false,
-    "modified": 1795703947
+    "modified": 1795711617
 }

@@ -29,15 +29,11 @@ add_action( 'save_post_pump', function ( $post_id, $post ) {
 }, 10, 2 );
 
 /**
- * The pump finder page: set in Theme Settings, or the page at /pump-finder/.
+ * The pump finder page: always the page at /pump-finder/.
  */
 function hp_pump_finder_url() {
-	$url = function_exists( 'get_field' ) ? get_field( 'pump_finder_page', 'option' ) : ''; // A page link field, so a URL
-	if ( $url ) {
-		return $url;
-	}
 	$page = get_page_by_path( 'pump-finder' );
-	return $page ? get_permalink( $page ) : home_url( '/' );
+	return $page ? get_permalink( $page ) : home_url( '/pump-finder/' );
 }
 
 /**
