@@ -61,15 +61,67 @@
 	padding-inline: 1rem;
 }
 
-// Undo blockquote styles
-.wp-block-quote:not(.is-large):not(.is-style-large) {
-	border-left: 0;
-	padding-left: 0;
+// Quote block: a pull quote. Grey panel with a red bar down the left, the
+// quote in heavy navy and the citation (who said it) small underneath.
+.wp-block-quote {
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem; // 10px
+	padding: var(--spacing) var(--spacing) var(--spacing) calc(var(--spacing) - 6px);
+	background-color: var(--color-tertiary);
+	border-left: 6px solid var(--color-secondary);
+	border-radius: 0 var(--radius) var(--radius) 0;
+
+	@include mq(medium) {
+		padding: 2rem 2.5rem 2rem calc(2.5rem - 6px); // 32px 40px, inside the bar
+	}
+
+	p {
+		margin: 0;
+		color: var(--color-primary);
+		font-size: var(--text-size-l);
+		font-weight: var(--font-weight-heavy);
+		line-height: var(--leading-tight);
+		letter-spacing: -0.03em;
+
+		@include mq(medium) {
+			font-size: 1.75rem; // 28px
+		}
+	}
+
+	cite {
+		color: var(--color-text-dark);
+		font-size: var(--text-size-s);
+		font-style: normal;
+		line-height: 1.33;
+	}
+}
+
+// Loose on a page, the panel lines up with the content column (like a table's
+// edges), rather than taking the column's side padding as its own
+#content > .wp-block-quote.wp-block-quote { // Doubled to outrank the layout's #content > :not(section, .alignfull)
+	box-sizing: border-box;
+	width: calc(100% - 2rem);
+	max-width: calc(var(--content-width) - 2rem);
+	margin: 0 auto var(--spacing-xl);
+	padding-inline: calc(var(--spacing) - 6px) var(--spacing);
+
+	@include mq(medium) {
+		padding-inline: calc(2.5rem - 6px) 2.5rem;
+	}
 }
 
 // Fix space between image and caption
 .wp-block-image {
 	line-height: 0;
+
+	// Scale to fit, keeping the shape. WordPress gives the <img> the image's real
+	// width and height, and core's rule that undoes the height isn't loaded on
+	// the front end.
+	img {
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 // Captioned image: rounded, with the caption in a dark tab over its bottom left corner
