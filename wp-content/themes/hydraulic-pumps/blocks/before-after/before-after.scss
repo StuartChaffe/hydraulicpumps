@@ -315,3 +315,33 @@
 		}
 	}
 }
+
+// Editor: one pump at a time, picked with the dots. They're radio buttons, so
+// no JavaScript is needed.
+.before-after--editor {
+	$max-pumps: 12;
+
+	.before-after__dot {
+		margin: 0;
+
+		&:has(input:checked) {
+			background-color: var(--color-primary);
+		}
+
+		input {
+			position: absolute;
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+
+	.before-after__slide {
+		display: none;
+	}
+
+	@for $i from 1 through $max-pumps {
+		&:has(.before-after__dot:nth-child(#{$i}) input:checked) .before-after__slide:nth-child(#{$i}) {
+			display: block;
+		}
+	}
+}

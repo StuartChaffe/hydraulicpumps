@@ -4,6 +4,7 @@
  * (or use the arrow keys) to compare; the Before and After buttons slide it
  * all the way across. The pump's details sit underneath. More than one pump
  * makes a carousel with dots (Swiper). See src/js/components/before-after.js.
+ * In the editor, the dots show one pump at a time (no carousel).
  *
  * @var array $block      The block settings.
  * @var bool  $is_preview True in the editor.
@@ -20,14 +21,18 @@ if ( ! $slides ) :
 	return;
 endif;
 
+$is_preview  = ! empty( $is_preview );
 $is_carousel = count( $slides ) > 1;
+// Editor: one pump at a time, picked with the dots (radio buttons, so it
+// works without JavaScript; see before-after.scss)
+$editor_tabs = $is_preview && $is_carousel;
 $enquire     = get_field('enquire') ?: array(
 	'url'    => get_permalink( get_page_by_path( 'book-a-repair' ) ) ?: home_url( '/book-a-repair/' ),
 	'title'  => __( 'Enquire about a similar repair', 'origin' ),
 	'target' => '',
 );
 ?>
-<section class="block before-after">
+<section class="block before-after<?php echo $editor_tabs ? ' before-after--editor' : ''; ?>">
 	<div class="container container--content">
 		<div class="before-after__carousel<?php echo $is_carousel ? ' swiper' : ''; ?>">
 			<div class="before-after__track<?php echo $is_carousel ? ' swiper-wrapper' : ''; ?>">
@@ -84,7 +89,7 @@ $enquire     = get_field('enquire') ?: array(
 								</div>
 							<?php endif; ?>
 
-							<?php if ( $story ) : // Covers the photo; the close button returns to it ?>
+							<?php if ( $story && ! $is_preview ) : // Covers the photo; the close button returns to it. Not in the editor, which drops the hidden attribute ?>
 								<div class="before-after__story" id="<?php echo esc_attr( $slide_id ); ?>-story" role="region" aria-label="<?php esc_attr_e( 'About this repair', 'origin' ); ?>" tabindex="-1" hidden>
 									<button class="before-after__close" type="button">
 										<img src="<?php echo esc_url( $images . 'close.svg' ); ?>" width="42" height="42" alt="<?php esc_attr_e( 'Close', 'origin' ); ?>">
@@ -111,8 +116,17 @@ $enquire     = get_field('enquire') ?: array(
 				<?php endforeach; ?>
 			</div>
 
-			<?php if ( $is_carousel ) : ?>
+			<?php if ( $is_carousel && ! $is_preview ) : ?>
 				<div class="before-after__dots"></div>
+			<?php elseif ( $editor_tabs ) : // Editor: radio buttons styled as the dots ?>
+				<div class="before-after__dots">
+					<?php foreach ( $slides as $i => $slide ) : ?>
+						<label class="before-after__dot">
+							<input type="radio" name="<?php echo esc_attr( ( $block['id'] ?? 'before-after' ) . '-dot' ); ?>"<?php checked( $i, 0 ); ?>>
+							<span class="sr-only"><?php echo esc_html( ! empty( $slide['pump'] ) ? get_the_title( $slide['pump'] ) : sprintf( __( 'Pump %d', 'origin' ), $i + 1 ) ); ?></span>
+						</label>
+					<?php endforeach; ?>
+				</div>
 			<?php endif; ?>
 		</div>
 	</div>
