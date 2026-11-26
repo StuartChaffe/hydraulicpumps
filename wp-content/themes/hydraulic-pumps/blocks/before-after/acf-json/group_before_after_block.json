@@ -1,6 +1,6 @@
 {
     "key": "group_before_after_block",
-    "title": "Block/Before & After",
+    "title": "Block\/Before & After",
     "fields": [
         {
             "key": "field_before_after_slides",
@@ -211,7 +211,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf/before-after"
+                "value": "acf\/before-after"
             }
         ]
     ],
@@ -225,7 +225,8 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "allow_ai_access": false,
+    "enable_acf_abilities": true,
     "ai_description": "",
-    "modified": 1795800300
+    "allow_ai_access": false,
+    "modified": 1795623763
 }

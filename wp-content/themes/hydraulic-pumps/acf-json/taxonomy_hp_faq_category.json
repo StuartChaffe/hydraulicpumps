@@ -71,5 +71,7 @@
     "meta_box": "default",
     "meta_box_cb": "",
     "meta_box_sanitize_cb": "",
-    "modified": 1795120152
+    "enable_acf_abilities": true,
+    "ai_description": "",
+    "modified": 1795623763
 }

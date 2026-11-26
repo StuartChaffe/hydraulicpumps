@@ -48,7 +48,8 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "allow_ai_access": false,
+    "enable_acf_abilities": true,
     "ai_description": "",
-    "modified": 1795700700
+    "allow_ai_access": false,
+    "modified": 1795623763
 }

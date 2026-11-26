@@ -1,6 +1,6 @@
 {
     "key": "group_pump_finder_block",
-    "title": "Block/Pump Finder",
+    "title": "Block\/Pump Finder",
     "fields": [
         {
             "key": "field_pump_finder_tab_search",
@@ -115,7 +115,8 @@
             "default_value": "Book in your unit\nArrange collection\nWe inspect and quote\nApprove and repair",
             "placeholder": "",
             "rows": 4,
-            "new_lines": ""
+            "new_lines": "",
+            "maxlength": ""
         },
         {
             "key": "field_pump_finder_button",
@@ -198,7 +199,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf/pump-finder"
+                "value": "acf\/pump-finder"
             }
         ]
     ],
@@ -212,7 +213,9 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "allow_ai_access": false,
+    "enable_acf_abilities": true,
     "ai_description": "",
-    "modified": 1795700500
+    "allow_ai_access": false,
+    "modified": 1795623763,
+    "local_file": "\/Users\/stuartchaffe\/Sites\/hydraulicpumps\/wp-content\/themes\/hydraulic-pumps\/blocks\/pump-finder\/acf-json\/group_pump_finder_block.json"
 }
