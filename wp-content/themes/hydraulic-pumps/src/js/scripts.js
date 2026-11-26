@@ -13,3 +13,4 @@ import './components/before-after';
 import './components/page-header';
 import './components/image-gallery';
 import './components/menu';
+import './components/tables';

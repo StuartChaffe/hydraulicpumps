@@ -30,6 +30,29 @@ table {
 
 	.wp-block-table & {
 		margin-bottom: 0;
+
+		// Small screens: wide enough for the columns to read well, scrolling
+		// sideways in the block rather than squashing to fit
+		@include mq($until: medium) {
+			min-width: 45rem; // 720px
+		}
+	}
+}
+
+// Fade whichever edge has more table to scroll to (classes from tables.js).
+// A mask, as a shadow would sit behind the rows' backgrounds.
+.wp-block-table {
+	--fade: 2.5rem;
+	--fade-start: #000;
+	--fade-end: #000;
+	mask-image: linear-gradient(to right, var(--fade-start), #000 var(--fade), #000 calc(100% - var(--fade)), var(--fade-end));
+
+	&.has-more-start {
+		--fade-start: transparent;
+	}
+
+	&.has-more-end {
+		--fade-end: transparent;
 	}
 }
 
