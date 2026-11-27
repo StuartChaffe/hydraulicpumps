@@ -3,6 +3,58 @@
     "title": "Block/Feature Panel",
     "fields": [
         {
+            "key": "field_feature_panel_aside",
+            "label": "Beside the content",
+            "name": "aside",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "image": "Image",
+                "quote": "Quote"
+            },
+            "default_value": "image",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_feature_panel_image_position",
+            "label": "Side",
+            "name": "image_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Which side of the content the image or quote goes on.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "right": "Right",
+                "left": "Left"
+            },
+            "default_value": "right",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_feature_panel_image",
             "label": "Image",
             "name": "image",
@@ -10,7 +62,15 @@
             "type": "image",
             "instructions": "Cropped to 5:4.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "!=",
+                        "value": "quote"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -35,7 +95,15 @@
             "type": "image",
             "instructions": "Optional. Stacks under the first image, e.g. a before and after. Each image shows its Media Library caption.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "!=",
+                        "value": "quote"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -53,30 +121,176 @@
             "mime_types": ""
         },
         {
-            "key": "field_feature_panel_image_position",
-            "label": "Image position",
-            "name": "image_position",
+            "key": "field_feature_panel_quote_text",
+            "label": "Quote",
+            "name": "quote_text",
             "aria-label": "",
-            "type": "select",
-            "instructions": "",
+            "type": "textarea",
+            "instructions": "The quote marks are added for you.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "==",
+                        "value": "quote"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_feature_panel_quote_name",
+            "label": "Name",
+            "name": "quote_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown in bold, e.g. Mark",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "==",
+                        "value": "quote"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "right": "Right",
-                "left": "Left"
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_feature_panel_quote_company",
+            "label": "Company",
+            "name": "quote_company",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown after the name, e.g. “at HPUK”",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "==",
+                        "value": "quote"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
             },
-            "default_value": "right",
-            "return_format": "value",
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_feature_panel_quote_phone",
+            "label": "Phone",
+            "name": "quote_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "==",
+                        "value": "quote"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_feature_panel_quote_email",
+            "label": "Email",
+            "name": "quote_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "==",
+                        "value": "quote"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_feature_panel_quote_photo",
+            "label": "Photo",
+            "name": "quote_photo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional. Sits in the bottom left corner, cut to shape. A head-and-shoulders photo on a white or plain background, about 382 × 642px (portrait), works best.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_feature_panel_aside",
+                        "operator": "==",
+                        "value": "quote"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -100,5 +314,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1795600100
+    "modified": 1795811392
 }
