@@ -64,7 +64,7 @@
 }
 
 // Large spans the full header, so pad the content to line its text up with
-// .container (centred at --container-width, with 1rem side padding)
+// the content column (centred at --content-width, with --gutter side padding)
 .page-header--large .page-header__content {
 	// padding-inline: 1rem;
 	padding-top: var(--spacing-l); // Less on mobile, matching the small header's space above
@@ -77,7 +77,7 @@
 
 	@include mq(medium) {
 		padding-right: 0;
-		padding-left: calc(max(0px, (100% - var(--content-width)) / 2) + 1rem);
+		padding-left: calc(max(0px, (100% - var(--content-width)) / 2) + var(--gutter));
 		// padding-right: var(--spacing-l);
 	}
 }
@@ -116,9 +116,9 @@
 	.page-header__content {
 		text-align: center;
 
-		// Mobile: with .container's 1rem, --spacing in total, like the large header
+		// Mobile: with .container's gutter, --spacing in total, like the large header
 		@include mq($until: medium) {
-			padding-inline: calc(var(--spacing) - 1rem);
+			padding-inline: calc(var(--spacing) - var(--gutter));
 		}
 
 		@include mq(medium) {

@@ -25,7 +25,7 @@
 			gap: var(--spacing-l);
 			padding-right: var(--spacing-l);
 			// Text lines up with --content-width, like the large page header
-			padding-left: calc(max(0px, (100% - var(--content-width)) / 2) + 1rem);
+			padding-left: calc(max(0px, (100% - var(--content-width)) / 2) + var(--gutter));
 		}
 
 		// No image to stand on the bottom: pad the bottom too

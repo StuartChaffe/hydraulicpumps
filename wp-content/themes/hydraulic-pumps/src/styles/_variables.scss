@@ -31,8 +31,8 @@
 	--color-text-base: #000;
 	--color-text-dark: #181822;
 	--color-text-reversed: #FFF;
-	--color-text-link: #0087D0;
-	--color-text-hover: #003451;
+	--color-text-link: var(--color-primary); // Navy
+	--color-text-hover: var(--color-secondary); // Red
 
 	--color-facebook: #3B5998;
 	--color-twitter: #1DA1F2;
@@ -45,7 +45,7 @@
 	--radius-s: 5px;
 	--radius: 20px;
 
-	--content-width: 70.75rem; // 1132px (1100px content + 1rem padding each side)
+	--content-width: 70.75rem; // 1132px, including --gutter each side
 	--container-width-s: 51.5625rem; // 825px
 	--container-width: 85rem; // 1360px
 	--container-width-l: 93.75rem; // 1500px
@@ -82,7 +82,13 @@
 	--gap: var(--spacing);
 	--gap-l: var(--spacing-l);
 
+	// Side padding of .container and the loose content column. Everything that
+	// lines its text up with them uses this, so they all move together
+	--gutter: 1rem;
+
 	@include mq(medium) {
+		--gutter: 2rem;
+
 		--text-size-3xl: 3.2rem;
 		--text-size-2xl: 2rem;
 		--text-size-xl: 1.8rem;
@@ -98,6 +104,10 @@
 		--spacing: 1.875rem; // 30px
 		--spacing-s: 1rem; // 16px
 		--spacing-xs: 0.625rem; // 10px
+	}
+
+	@include mq(large) {
+		--gutter: 3rem;
 	}
 	// @include mq(xlarge) {
 	// 	--text-size-3xl: 3.2rem;

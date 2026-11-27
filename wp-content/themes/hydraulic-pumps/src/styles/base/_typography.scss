@@ -64,7 +64,7 @@ li p {
 #content > :is(ul, ol).wp-block-list {
 	margin-top: 0;
 	margin-bottom: var(--spacing);
-	padding-left: calc(1rem + 1.25em);
+	padding-left: calc(var(--gutter) + 1.25em);
 	font-size: var(--text-size-m);
 	line-height: var(--leading-base);
 	list-style: disc;
@@ -109,6 +109,13 @@ a {
 
 a:hover {
 	color: var(--color-text-hover);
+	text-decoration: underline;
+}
+
+// Links in running text are underlined, so they stand out from the navy
+// headings and bold text around them. Blocks that style their own links
+// (e.g. .author-bio__contact) outrank this
+p a {
 	text-decoration: underline;
 }
 h1,
