@@ -47,6 +47,14 @@
 	max-width: var(--container-width-s);
 }
 
+// Centred paragraphs and headings only need the gutter on small screens, where
+// they'd otherwise touch the edge; from medium the narrow measure keeps them clear
+#content > :is(p, h1, h2, h3, h4, h5, h6).has-text-align-center {
+	@include mq(medium) {
+		padding-inline: 0;
+	}
+}
+
 // Vertical rhythm: every custom block gets --spacing-xl below it. Loose core
 // blocks keep their normal spacing, except the last one in a run (before a
 // block, or at the end of the page), which gets the same --spacing-xl.

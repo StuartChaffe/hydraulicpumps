@@ -84,6 +84,12 @@ li p {
 	margin-bottom: var(--spacing);
 }
 
+// Before a block, a loose paragraph or list takes the standard --spacing-xl
+// (see _layout.scss); the rules above would otherwise outrank it
+#content > :is(p, .wp-block-list):has(+ section) {
+	margin-bottom: var(--spacing-xl);
+}
+
 // A paragraph leading into a list sits a little closer to it
 #content > p:has(+ .wp-block-list) {
 	margin-bottom: var(--spacing-s);
